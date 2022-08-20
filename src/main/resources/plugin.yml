@@ -1,0 +1,13 @@
+name: CosmeticsMenu
+version: '${project.version}'
+main: dev.wonkypigs.cosmiccosmetics.CosmeticsMenu
+api-version: 1.19
+prefix: CosmeticsMenu
+authors: [WonkyPigs]
+description: A plugin that adds cool cosmetics to Minecraft
+commands:
+  cosmiccosmetics:
+    permission: ccosmetics.menu
+    usage: /cosmiccosmetics
+    aliases: [cc, ccmenu, ccosmetics]
+    description: Opens the cosmetics menu
