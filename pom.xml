@@ -6,7 +6,7 @@
 
     <groupId>dev.wonkypigs</groupId>
     <artifactId>CosmicCosmetics</artifactId>
-    <version>0.1-BETA</version>
+    <version>BETA-0.2</version>
     <packaging>jar</packaging>
 
     <name>CosmicCosmetics</name>

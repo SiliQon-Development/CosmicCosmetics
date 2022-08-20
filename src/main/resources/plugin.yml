@@ -1,13 +1,13 @@
-name: CosmeticsMenu
+name: CosmicCosmetics
 version: '${project.version}'
-main: dev.wonkypigs.cosmiccosmetics.CosmeticsMenu
+main: dev.wonkypigs.cosmiccosmetics.CosmicCosmetics
 api-version: 1.19
-prefix: CosmeticsMenu
+prefix: CosmicCosmetics
 authors: [WonkyPigs]
-description: A plugin that adds cool cosmetics to Minecraft
+description: A plugin that adds cool handlers to Minecraft
 commands:
   cosmiccosmetics:
     permission: ccosmetics.menu
     usage: /cosmiccosmetics
     aliases: [cc, ccmenu, ccosmetics]
-    description: Opens the cosmetics menu
+    description: Opens the handlers menu
