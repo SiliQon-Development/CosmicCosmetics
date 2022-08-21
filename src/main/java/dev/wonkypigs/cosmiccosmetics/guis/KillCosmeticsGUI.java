@@ -9,20 +9,20 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class BowCosmeticsGUI {
+public class KillCosmeticsGUI {
 
     private final CosmicCosmetics plugin = CosmicCosmetics.getPlugin(CosmicCosmetics.class);
 
-    public static void openBowCosmeticsGUI(Player player) {
+    public static void openKillCosmeticsGUI(Player player) {
         // Set up the menu
-        Inventory bowCosmetics = Bukkit.createInventory(player, 27, ChatColor.RED + "" + ChatColor.BOLD + "Bow Effects");
+        Inventory killCosmetics = Bukkit.createInventory(player, 27, ChatColor.RED + "" + ChatColor.BOLD + "Kill Effects");
 
         // All Menu Items
-        ItemStack cryingEffect = new ItemStack(Material.CRYING_OBSIDIAN, 1);
-        ItemStack lavaEffect = new ItemStack(Material.LAVA_BUCKET, 1);
-        ItemStack waterEffect = new ItemStack(Material.WATER_BUCKET, 1);
-        ItemStack ashEffect = new ItemStack(Material.GUNPOWDER, 1);
+        ItemStack bloodEffect = new ItemStack(Material.RED_DYE, 1);
+        ItemStack celebrationEffect = new ItemStack(Material.FIREWORK_ROCKET, 1);
         ItemStack sparkleEffect = new ItemStack(Material.NETHER_STAR, 1);
+        ItemStack musicalEffect = new ItemStack(Material.NOTE_BLOCK, 1);
+        ItemStack voidEffect = new ItemStack(Material.END_GATEWAY, 1);
         ItemStack loveEffect = new ItemStack(Material.RED_DYE, 1);
         ItemStack critEffect = new ItemStack(Material.DIAMOND_SWORD, 1);
         ItemStack dragonEffect = new ItemStack(Material.DRAGON_BREATH, 1);
@@ -32,11 +32,11 @@ public class BowCosmeticsGUI {
         ItemStack backButton = new ItemStack(Material.BARRIER, 1);
 
         // Get All Menu Item Meta Data
-        ItemMeta cryingEffectMeta = cryingEffect.getItemMeta();
-        ItemMeta lavaEffectMeta = lavaEffect.getItemMeta();
-        ItemMeta waterEffectMeta = waterEffect.getItemMeta();
-        ItemMeta ashEffectMeta = ashEffect.getItemMeta();
+        ItemMeta bloodEffectMeta = bloodEffect.getItemMeta();
+        ItemMeta celebrationEffectMeta = celebrationEffect.getItemMeta();
         ItemMeta sparkleEffectMeta = sparkleEffect.getItemMeta();
+        ItemMeta musicalEffectMeta = musicalEffect.getItemMeta();
+        ItemMeta voidEffectMeta = voidEffect.getItemMeta();
         ItemMeta loveEffectMeta = loveEffect.getItemMeta();
         ItemMeta critEffectMeta = critEffect.getItemMeta();
         ItemMeta dragonEffectMeta = dragonEffect.getItemMeta();
@@ -46,16 +46,16 @@ public class BowCosmeticsGUI {
         ItemMeta backButtonmeta = backButton.getItemMeta();
 
         // Set All Menu Item Meta Data
-        cryingEffectMeta.setDisplayName(ChatColor.DARK_BLUE + "Crying Effect");
-        cryingEffect.setItemMeta(cryingEffectMeta);
-        lavaEffectMeta.setDisplayName(ChatColor.RED + "Lava Effect");
-        lavaEffect.setItemMeta(lavaEffectMeta);
-        waterEffectMeta.setDisplayName(ChatColor.DARK_BLUE + "Water Effect");
-        waterEffect.setItemMeta(waterEffectMeta);
-        ashEffectMeta.setDisplayName(ChatColor.GRAY + "Ash Effect");
-        ashEffect.setItemMeta(ashEffectMeta);
-        sparkleEffectMeta.setDisplayName(ChatColor.LIGHT_PURPLE + "Sparkle Effect");
+        bloodEffectMeta.setDisplayName(ChatColor.RED + "Blood Effect");
+        bloodEffect.setItemMeta(bloodEffectMeta);
+        celebrationEffectMeta.setDisplayName(ChatColor.GREEN + "Celebration Effect");
+        celebrationEffect.setItemMeta(celebrationEffectMeta);
+        sparkleEffectMeta.setDisplayName(ChatColor.WHITE + "Sparkle Effect");
         sparkleEffect.setItemMeta(sparkleEffectMeta);
+        musicalEffectMeta.setDisplayName(ChatColor.YELLOW + "Musical Effect");
+        musicalEffect.setItemMeta(musicalEffectMeta);
+        voidEffectMeta.setDisplayName(ChatColor.DARK_PURPLE + "Void Effect");
+        voidEffect.setItemMeta(voidEffectMeta);
         loveEffectMeta.setDisplayName(ChatColor.AQUA + "Love Effect");
         loveEffect.setItemMeta(loveEffectMeta);
         critEffectMeta.setDisplayName(ChatColor.WHITE + "Crit Effect");
@@ -73,37 +73,37 @@ public class BowCosmeticsGUI {
 
         // Add Items to Menu
         // Row 1
-        bowCosmetics.setItem(0, filler);
-        bowCosmetics.setItem(1, filler);
-        bowCosmetics.setItem(2, filler);
-        bowCosmetics.setItem(3, filler);
-        bowCosmetics.setItem(4, filler);
-        bowCosmetics.setItem(5, filler);
-        bowCosmetics.setItem(6, filler);
-        bowCosmetics.setItem(7, filler);
-        bowCosmetics.setItem(8, filler);
+        killCosmetics.setItem(0, filler);
+        killCosmetics.setItem(1, filler);
+        killCosmetics.setItem(2, filler);
+        killCosmetics.setItem(3, filler);
+        killCosmetics.setItem(4, filler);
+        killCosmetics.setItem(5, filler);
+        killCosmetics.setItem(6, filler);
+        killCosmetics.setItem(7, filler);
+        killCosmetics.setItem(8, filler);
         // Row 2
-        bowCosmetics.setItem(9, cryingEffect);
-        bowCosmetics.setItem(10, lavaEffect);
-        bowCosmetics.setItem(11, waterEffect);
-        bowCosmetics.setItem(12, ashEffect);
-        bowCosmetics.setItem(13, sparkleEffect);
-        bowCosmetics.setItem(14, loveEffect);
-        bowCosmetics.setItem(15, critEffect);
-        bowCosmetics.setItem(16, dragonEffect);
-        bowCosmetics.setItem(17, blossomEffect);
+        killCosmetics.setItem(9, bloodEffect);
+        killCosmetics.setItem(10, celebrationEffect);
+        killCosmetics.setItem(11, sparkleEffect);
+        killCosmetics.setItem(12, musicalEffect);
+        killCosmetics.setItem(13, voidEffect);
+        killCosmetics.setItem(14, loveEffect);
+        killCosmetics.setItem(15, critEffect);
+        killCosmetics.setItem(16, dragonEffect);
+        killCosmetics.setItem(17, blossomEffect);
         // Row 3
-        bowCosmetics.setItem(18, filler);
-        bowCosmetics.setItem(19, filler);
-        bowCosmetics.setItem(20, filler);
-        bowCosmetics.setItem(21, filler);
-        bowCosmetics.setItem(22, resetEffect);
-        bowCosmetics.setItem(23, filler);
-        bowCosmetics.setItem(24, filler);
-        bowCosmetics.setItem(25, filler);
-        bowCosmetics.setItem(26, backButton);
+        killCosmetics.setItem(18, filler);
+        killCosmetics.setItem(19, filler);
+        killCosmetics.setItem(20, filler);
+        killCosmetics.setItem(21, filler);
+        killCosmetics.setItem(22, resetEffect);
+        killCosmetics.setItem(23, filler);
+        killCosmetics.setItem(24, filler);
+        killCosmetics.setItem(25, filler);
+        killCosmetics.setItem(26, backButton);
 
         // Show menu to player
-        player.openInventory(bowCosmetics);
+        player.openInventory(killCosmetics);
     }
 }

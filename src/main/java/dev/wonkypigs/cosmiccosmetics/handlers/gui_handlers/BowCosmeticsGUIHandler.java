@@ -33,7 +33,7 @@ public class BowCosmeticsGUIHandler implements Listener {
             }
             else if(e.getCurrentItem().getType().equals(Material.LAVA_BUCKET)) {
                 if(player.hasPermission("ccosmetics.bow.lava")) {
-                    pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "DRIPPING_DRIPSTONE_LAVA");
+                    pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "FALLING_LAVA");
                     player.sendMessage(plugin.prefix + "Activated Lava Arrow effect");
                 }else {
                     player.sendMessage(plugin.prefix + plugin.getConfigValue("no-permission"));
@@ -48,9 +48,9 @@ public class BowCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.GUNPOWDER)) {
-                if(player.hasPermission("ccosmetics.bow.smoke")) {
-                    pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "SMOKE");
-                    player.sendMessage(plugin.prefix + "Activated Smoke Arrow effect");
+                if(player.hasPermission("ccosmetics.bow.ash")) {
+                    pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "ASH");
+                    player.sendMessage(plugin.prefix + "Activated Ash Arrow effect");
                 }else {
                     player.sendMessage(plugin.prefix + plugin.getConfigValue("no-permission"));
                 }

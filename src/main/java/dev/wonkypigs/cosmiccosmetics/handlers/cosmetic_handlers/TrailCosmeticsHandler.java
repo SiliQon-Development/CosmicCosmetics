@@ -24,8 +24,11 @@ public class TrailCosmeticsHandler implements Listener {
             return;
         }else{
             int amount = 10;
-            if(effect.equalsIgnoreCase("HEART") || effect.equalsIgnoreCase("REVERSE_PORTAL") || effect.equalsIgnoreCase("CRIT")) {
+            if(effect.equalsIgnoreCase("HEART") || effect.equalsIgnoreCase("REVERSE_PORTAL") || effect.equalsIgnoreCase("CRIT" )) {
                 amount = 5;
+            }
+            if(effect.equalsIgnoreCase("ASH")){
+                amount = 20;
             }
             player.getWorld().spawnParticle(Particle.valueOf(effect), player.getLocation(), amount, 0, 0, 0);
         }

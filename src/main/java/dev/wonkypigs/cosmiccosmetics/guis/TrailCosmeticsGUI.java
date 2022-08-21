@@ -21,7 +21,7 @@ public class TrailCosmeticsGUI {
         ItemStack cryingEffect = new ItemStack(Material.CRYING_OBSIDIAN, 1);
         ItemStack lavaEffect = new ItemStack(Material.LAVA_BUCKET, 1);
         ItemStack waterEffect = new ItemStack(Material.WATER_BUCKET, 1);
-        ItemStack smokeEffect = new ItemStack(Material.GUNPOWDER, 1);
+        ItemStack ashEffect = new ItemStack(Material.GUNPOWDER, 1);
         ItemStack sparkleEffect = new ItemStack(Material.NETHER_STAR, 1);
         ItemStack loveEffect = new ItemStack(Material.RED_DYE, 1);
         ItemStack critEffect = new ItemStack(Material.DIAMOND_SWORD, 1);
@@ -35,7 +35,7 @@ public class TrailCosmeticsGUI {
         ItemMeta cryingEffectMeta = cryingEffect.getItemMeta();
         ItemMeta lavaEffectMeta = lavaEffect.getItemMeta();
         ItemMeta waterEffectMeta = waterEffect.getItemMeta();
-        ItemMeta smokeEffectMeta = smokeEffect.getItemMeta();
+        ItemMeta ashEffectMeta = ashEffect.getItemMeta();
         ItemMeta sparkleEffectMeta = sparkleEffect.getItemMeta();
         ItemMeta loveEffectMeta = loveEffect.getItemMeta();
         ItemMeta critEffectMeta = critEffect.getItemMeta();
@@ -52,8 +52,8 @@ public class TrailCosmeticsGUI {
         lavaEffect.setItemMeta(lavaEffectMeta);
         waterEffectMeta.setDisplayName(ChatColor.DARK_BLUE + "Water Effect");
         waterEffect.setItemMeta(waterEffectMeta);
-        smokeEffectMeta.setDisplayName(ChatColor.GRAY + "Smoke Effect");
-        smokeEffect.setItemMeta(smokeEffectMeta);
+        ashEffectMeta.setDisplayName(ChatColor.GRAY + "Ash Effect");
+        ashEffect.setItemMeta(ashEffectMeta);
         sparkleEffectMeta.setDisplayName(ChatColor.LIGHT_PURPLE + "Sparkle Effect");
         sparkleEffect.setItemMeta(sparkleEffectMeta);
         loveEffectMeta.setDisplayName(ChatColor.AQUA + "Love Effect");
@@ -64,7 +64,7 @@ public class TrailCosmeticsGUI {
         dragonEffect.setItemMeta(dragonEffectMeta);
         blossomEffectMeta.setDisplayName(ChatColor.GREEN + "Blossom Effect");
         blossomEffect.setItemMeta(blossomEffectMeta);
-        resetEffectMeta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Reset Arrow Effect");
+        resetEffectMeta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Reset Trail Effect");
         resetEffect.setItemMeta(resetEffectMeta);
         fillerMeta.setDisplayName(ChatColor.GRAY + " ");
         filler.setItemMeta(fillerMeta);
@@ -86,7 +86,7 @@ public class TrailCosmeticsGUI {
         trailCosmetics.setItem(9, cryingEffect);
         trailCosmetics.setItem(10, lavaEffect);
         trailCosmetics.setItem(11, waterEffect);
-        trailCosmetics.setItem(12, smokeEffect);
+        trailCosmetics.setItem(12, ashEffect);
         trailCosmetics.setItem(13, sparkleEffect);
         trailCosmetics.setItem(14, loveEffect);
         trailCosmetics.setItem(15, critEffect);

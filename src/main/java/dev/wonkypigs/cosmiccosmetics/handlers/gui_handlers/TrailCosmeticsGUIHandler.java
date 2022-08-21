@@ -33,7 +33,7 @@ public class TrailCosmeticsGUIHandler implements Listener {
             }
             else if(e.getCurrentItem().getType().equals(Material.LAVA_BUCKET)) {
                 if(player.hasPermission("ccosmetics.trail.lava")) {
-                    pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "DRIPPING_DRIPSTONE_LAVA");
+                    pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "FALLING_LAVA");
                     player.sendMessage(plugin.prefix + "Activated Lava Trail effect");
                 }else {
                     player.sendMessage(plugin.prefix + plugin.getConfigValue("no-permission"));
@@ -47,10 +47,10 @@ public class TrailCosmeticsGUIHandler implements Listener {
                     player.sendMessage(plugin.prefix + plugin.getConfigValue("no-permission"));
                 }
             }
-            else if(e.getCurrentItem().getType().equals(Material.SALMON)) {
-                if(player.hasPermission("ccosmetics.trail.smoke")) {
-                    pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "SMOKE");
-                    player.sendMessage(plugin.prefix + "Activated Smoke Trail effect");
+            else if(e.getCurrentItem().getType().equals(Material.GUNPOWDER)) {
+                if(player.hasPermission("ccosmetics.trail.ash")) {
+                    pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "ASH");
+                    player.sendMessage(plugin.prefix + "Activated Ash Trail effect");
                 }else {
                     player.sendMessage(plugin.prefix + plugin.getConfigValue("no-permission"));
                 }

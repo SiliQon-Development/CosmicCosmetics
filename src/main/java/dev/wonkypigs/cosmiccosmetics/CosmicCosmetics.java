@@ -1,7 +1,6 @@
 package dev.wonkypigs.cosmiccosmetics;
 
 import dev.wonkypigs.cosmiccosmetics.commands.*;
-import dev.wonkypigs.cosmiccosmetics.guis.TrailCosmeticsGUI;
 import dev.wonkypigs.cosmiccosmetics.handlers.*;
 import dev.wonkypigs.cosmiccosmetics.handlers.cosmetic_handlers.*;
 import dev.wonkypigs.cosmiccosmetics.handlers.gui_handlers.*;

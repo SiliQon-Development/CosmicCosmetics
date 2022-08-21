@@ -45,6 +45,9 @@ public class BowCosmeticsHandler implements Listener {
                     if(effect.equalsIgnoreCase("HEART") || effect.equalsIgnoreCase("REVERSE_PORTAL") || effect.equalsIgnoreCase("CRIT")) {
                         amt = 5;
                     }
+                    if(effect.equalsIgnoreCase("ASH")) {
+                        amt = 20;
+                    }
                     EffectLoop((Arrow) e.getEntity(), effect, amt);
                 }
             }
