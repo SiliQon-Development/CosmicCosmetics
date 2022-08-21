@@ -28,37 +28,50 @@ public class KillCosmeticsHandler implements Listener {
             String effect = kpdata.get(new NamespacedKey(plugin, "kill_effect"), PersistentDataType.STRING);
 
             if(effect.equalsIgnoreCase("BLOOD")) {
-                victim.getWorld().spawnParticle(Particle.FALLING_LAVA, victim.getLocation(), 50, 0.5, 1, 0.5);
-                victim.getWorld().playSound(victim.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASEDRUM, 1, 1);
+                Particle.DustOptions dustOptions = new Particle.DustOptions(Color.RED, 1.0f);
+
+                victim.getWorld().spawnParticle(Particle.REDSTONE, victim.getLocation(), 50, 0.5, 1, 0.5, dustOptions);
+                killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASEDRUM, 2, 1);
             }
             else if(effect.equalsIgnoreCase("CELEBRATION")) {
-                // Make list with colors
-                Color[] colors = {Color.GREEN, Color.AQUA, Color.BLUE, Color.LIME, Color.MAROON, Color.ORANGE, Color.RED, Color.PURPLE};
 
-                // Choose random color
-                int rnd = new Random().nextInt(colors.length);
-                Color color = colors[rnd];
+                Firework fw2 = victim.getWorld().spawn(victim.getLocation(), Firework.class, fw -> {
+                    FireworkMeta fwm = fw.getFireworkMeta();
 
-                // Set firework meta
-                Firework fw = (Firework) victim.getWorld().spawnEntity(victim.getLocation(), EntityType.FIREWORK);
-                FireworkMeta fwm = fw.getFireworkMeta();
+                    fwm.setPower(1);
+                    fwm.addEffect(FireworkEffect.builder().withFade(Color.RED).withColor(Color.LIME, Color.BLUE).flicker(true).trail(true).with(FireworkEffect.Type.BURST).build());
 
-                // Ta-da!
-                fwm.setPower(2);
-                fwm.addEffect(FireworkEffect.builder().withColor(color).flicker(true).build());
-                fw.setFireworkMeta(fwm);
+                    fw.setFireworkMeta(fwm);
+                });
+                fw2.detonate();
             }
             else if(effect.equalsIgnoreCase("SPARKLE")) {
-                victim.getWorld().spawnParticle(Particle.END_ROD, victim.getLocation(), 50, 0.5, 0.5, 0.5);
-                victim.getWorld().playSound(victim.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
+                victim.getWorld().spawnParticle(Particle.END_ROD, victim.getLocation(), 75, 0.5, 0.5, 0.5);
+                killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 2, 1);
             }
             else if(effect.equalsIgnoreCase("MUSICAL")) {
-                victim.getWorld().spawnParticle(Particle.NOTE, victim.getLocation(), 25, 1, 1, 1);
-                victim.getWorld().playSound(victim.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1, 1);
+                victim.getWorld().spawnParticle(Particle.NOTE, victim.getLocation(), 20, 1, 1, 1);
+                killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 2, 1);
             }
             else if(effect.equalsIgnoreCase("VOID")) {
-                victim.getWorld().spawnParticle(Particle.PORTAL, victim.getLocation(), 75, 0.5, 0.5, 0.5);
-                victim.getWorld().playSound(victim.getLocation(), Sound.BLOCK_END_PORTAL_FRAME_FILL, 1, 1);
+                victim.getWorld().spawnParticle(Particle.PORTAL, victim.getLocation(), 100, 0, 0, 0);
+                killer.playSound(killer.getLocation(), Sound.BLOCK_END_PORTAL_FRAME_FILL, 2, 1);
+            }
+            else if(effect.equalsIgnoreCase("LOVE")) {
+                victim.getWorld().spawnParticle(Particle.HEART, victim.getLocation(), 20, 0.5, 0.5, 0.5);
+                killer.playSound(killer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 2, 1);
+            }
+            else if(effect.equalsIgnoreCase("CLOUD")) {
+                victim.getWorld().spawnParticle(Particle.CLOUD, victim.getLocation(), 25, 0, 0, 0);
+                killer.playSound(killer.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 2, 1);
+            }
+            else if(effect.equalsIgnoreCase("BLOSSOM")) {
+                victim.getWorld().spawnParticle(Particle.SPORE_BLOSSOM_AIR, victim.getLocation(), 75, 1, 1, 1);
+                killer.playSound(killer.getLocation(), Sound.BLOCK_SPORE_BLOSSOM_BREAK, 2, 1);
+            }
+            else if(effect.equalsIgnoreCase("DRAGON")) {
+                victim.getWorld().spawnParticle(Particle.DRAGON_BREATH, victim.getLocation(), 75, 0.5, 0.5, 0.5);
+                killer.playSound(killer.getLocation(), Sound.ENTITY_ENDER_DRAGON_HURT, 1, 1);
             }
         }
     }

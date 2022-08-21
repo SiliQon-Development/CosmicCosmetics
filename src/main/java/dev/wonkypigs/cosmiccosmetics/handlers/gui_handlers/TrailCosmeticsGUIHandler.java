@@ -24,7 +24,7 @@ public class TrailCosmeticsGUIHandler implements Listener {
             e.setCancelled(true);
             player.closeInventory();
             if(e.getCurrentItem().getType().equals(Material.CRYING_OBSIDIAN)) {
-                if(player.hasPermission("ccosmetics.trail.tears")) {
+                if(player.hasPermission("cc.trail.tears")) {
                     pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "FALLING_OBSIDIAN_TEAR");
                     player.sendMessage(plugin.prefix + "Activated Tears Trail effect");
                 }else {
@@ -32,7 +32,7 @@ public class TrailCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.LAVA_BUCKET)) {
-                if(player.hasPermission("ccosmetics.trail.lava")) {
+                if(player.hasPermission("cc.trail.lava")) {
                     pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "FALLING_LAVA");
                     player.sendMessage(plugin.prefix + "Activated Lava Trail effect");
                 }else {
@@ -40,7 +40,7 @@ public class TrailCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.WATER_BUCKET)) {
-                if(player.hasPermission("ccosmetics.trail.water")) {
+                if(player.hasPermission("cc.trail.water")) {
                     pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "FALLING_WATER");
                     player.sendMessage(plugin.prefix + "Activated Water Trail effect");
                 }else {
@@ -48,7 +48,7 @@ public class TrailCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.GUNPOWDER)) {
-                if(player.hasPermission("ccosmetics.trail.ash")) {
+                if(player.hasPermission("cc.trail.ash")) {
                     pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "ASH");
                     player.sendMessage(plugin.prefix + "Activated Ash Trail effect");
                 }else {
@@ -56,7 +56,7 @@ public class TrailCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.NETHER_STAR)) {
-                if(player.hasPermission("ccosmetics.trail.sparkle")) {
+                if(player.hasPermission("cc.trail.sparkle")) {
                     pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "WAX_OFF");
                     player.sendMessage(plugin.prefix + "Activated Sparkle Trail effect");
                 }else {
@@ -64,7 +64,7 @@ public class TrailCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.RED_DYE)) {
-                if(player.hasPermission("ccosmetics.trail.love")) {
+                if(player.hasPermission("cc.trail.love")) {
                     pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "HEART");
                     player.sendMessage(plugin.prefix + "Activated Love Trail effect");
                 }else {
@@ -72,7 +72,7 @@ public class TrailCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.DIAMOND_SWORD)) {
-                if(player.hasPermission("ccosmetics.trail.crit")) {
+                if(player.hasPermission("cc.trail.crit")) {
                     pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "CRIT");
                     player.sendMessage(plugin.prefix + "Activated Crit Trail effect");
                 }else {
@@ -80,7 +80,7 @@ public class TrailCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.DRAGON_BREATH)) {
-                if(player.hasPermission("ccosmetics.trail.dragon")) {
+                if(player.hasPermission("cc.trail.dragon")) {
                     pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "REVERSE_PORTAL");
                     player.sendMessage(plugin.prefix + "Activated Dragon Trail effect");
                 }else {
@@ -88,7 +88,7 @@ public class TrailCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.SPORE_BLOSSOM)) {
-                if(player.hasPermission("ccosmetics.trail.blossom")) {
+                if(player.hasPermission("cc.trail.blossom")) {
                     pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "FALLING_SPORE_BLOSSOM");
                     player.sendMessage(plugin.prefix + "Activated Blossom Trail effect");
                 }else {

@@ -6,12 +6,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class TrailCosmeticsGUI {
 
-    private final CosmicCosmetics plugin = CosmicCosmetics.getPlugin(CosmicCosmetics.class);
 
     public static void openTrailCosmeticsGUI(Player player) {
         // Set up the menu
@@ -47,28 +47,40 @@ public class TrailCosmeticsGUI {
 
         // Set All Menu Item Meta Data
         cryingEffectMeta.setDisplayName(ChatColor.DARK_BLUE + "Crying Effect");
+        cryingEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         cryingEffect.setItemMeta(cryingEffectMeta);
         lavaEffectMeta.setDisplayName(ChatColor.RED + "Lava Effect");
+        lavaEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         lavaEffect.setItemMeta(lavaEffectMeta);
         waterEffectMeta.setDisplayName(ChatColor.DARK_BLUE + "Water Effect");
+        waterEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         waterEffect.setItemMeta(waterEffectMeta);
         ashEffectMeta.setDisplayName(ChatColor.GRAY + "Ash Effect");
+        ashEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         ashEffect.setItemMeta(ashEffectMeta);
         sparkleEffectMeta.setDisplayName(ChatColor.LIGHT_PURPLE + "Sparkle Effect");
+        sparkleEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         sparkleEffect.setItemMeta(sparkleEffectMeta);
         loveEffectMeta.setDisplayName(ChatColor.AQUA + "Love Effect");
+        loveEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         loveEffect.setItemMeta(loveEffectMeta);
         critEffectMeta.setDisplayName(ChatColor.WHITE + "Crit Effect");
+        critEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         critEffect.setItemMeta(critEffectMeta);
         dragonEffectMeta.setDisplayName(ChatColor.DARK_PURPLE + "Dragon Effect");
+        dragonEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         dragonEffect.setItemMeta(dragonEffectMeta);
         blossomEffectMeta.setDisplayName(ChatColor.GREEN + "Blossom Effect");
+        blossomEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         blossomEffect.setItemMeta(blossomEffectMeta);
         resetEffectMeta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Reset Trail Effect");
+        resetEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         resetEffect.setItemMeta(resetEffectMeta);
         fillerMeta.setDisplayName(ChatColor.GRAY + " ");
+        fillerMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         filler.setItemMeta(fillerMeta);
         backButtonmeta.setDisplayName(ChatColor.RED + "<- Go Back");
+        backButtonmeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         backButton.setItemMeta(backButtonmeta);
 
         // Add Items to Menu

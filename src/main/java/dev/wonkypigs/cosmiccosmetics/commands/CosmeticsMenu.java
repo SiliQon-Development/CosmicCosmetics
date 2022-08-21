@@ -9,6 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -19,7 +20,7 @@ public class CosmeticsMenu implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender instanceof Player) {
-            if(sender.hasPermission("ccosmetics.menu")){
+            if(sender.hasPermission("cc.menu")){
                 Player player = (Player) sender;
                 openMainCosmeticsGUI(player);
             }else{
@@ -39,16 +40,25 @@ public class CosmeticsMenu implements CommandExecutor {
         ItemStack bowCosmetics = new ItemStack(Material.BOW, 1);
         ItemMeta bowCosmeticsMeta = bowCosmetics.getItemMeta();
         bowCosmeticsMeta.setDisplayName(ChatColor.GREEN + "Bow Effects");
+        bowCosmeticsMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         bowCosmetics.setItemMeta(bowCosmeticsMeta);
 
         ItemStack trailCosmetics = new ItemStack(Material.DIAMOND_BOOTS, 1);
         ItemMeta trailCosmeticsMeta = trailCosmetics.getItemMeta();
         trailCosmeticsMeta.setDisplayName(ChatColor.GREEN + "Trail Effects");
+        trailCosmeticsMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         trailCosmetics.setItemMeta(trailCosmeticsMeta);
+
+        ItemStack killCosmetics = new ItemStack(Material.DIAMOND_SWORD, 1);
+        ItemMeta killCosmeticsMeta = killCosmetics.getItemMeta();
+        killCosmeticsMeta.setDisplayName(ChatColor.GREEN + "Kill Effects");
+        killCosmeticsMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        killCosmetics.setItemMeta(killCosmeticsMeta);
 
         ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE, 1);
         ItemMeta fillerMeta = filler.getItemMeta();
         fillerMeta.setDisplayName(" ");
+        fillerMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         filler.setItemMeta(fillerMeta);
 
         // Add Items To Menu
@@ -63,13 +73,13 @@ public class CosmeticsMenu implements CommandExecutor {
         cosmeticsMenu.setItem(8, filler);
         // Row 2
         cosmeticsMenu.setItem(9, filler);
-        cosmeticsMenu.setItem(10, filler);
+        cosmeticsMenu.setItem(10, trailCosmetics);
         cosmeticsMenu.setItem(11, filler);
-        cosmeticsMenu.setItem(12, bowCosmetics);
-        cosmeticsMenu.setItem(13, filler);
-        cosmeticsMenu.setItem(14, trailCosmetics);
+        cosmeticsMenu.setItem(12, filler);
+        cosmeticsMenu.setItem(13, killCosmetics);
+        cosmeticsMenu.setItem(14, filler);
         cosmeticsMenu.setItem(15, filler);
-        cosmeticsMenu.setItem(16, filler);
+        cosmeticsMenu.setItem(16, bowCosmetics);
         cosmeticsMenu.setItem(17, filler);
         // Row 3
         cosmeticsMenu.setItem(18, filler);

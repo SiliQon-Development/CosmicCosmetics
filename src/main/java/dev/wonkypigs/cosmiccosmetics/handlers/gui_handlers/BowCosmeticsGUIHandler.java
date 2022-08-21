@@ -24,7 +24,7 @@ public class BowCosmeticsGUIHandler implements Listener {
             e.setCancelled(true);
             player.closeInventory();
             if(e.getCurrentItem().getType().equals(Material.CRYING_OBSIDIAN)) {
-                if(player.hasPermission("ccosmetics.bow.tears")) {
+                if(player.hasPermission("cc.bow.tears")) {
                     pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "FALLING_OBSIDIAN_TEAR");
                     player.sendMessage(plugin.prefix + "Activated Tears Arrow effect");
                 }else {
@@ -32,7 +32,7 @@ public class BowCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.LAVA_BUCKET)) {
-                if(player.hasPermission("ccosmetics.bow.lava")) {
+                if(player.hasPermission("cc.bow.lava")) {
                     pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "FALLING_LAVA");
                     player.sendMessage(plugin.prefix + "Activated Lava Arrow effect");
                 }else {
@@ -40,7 +40,7 @@ public class BowCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.WATER_BUCKET)) {
-                if(player.hasPermission("ccosmetics.bow.water")) {
+                if(player.hasPermission("cc.bow.water")) {
                     pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "FALLING_WATER");
                     player.sendMessage(plugin.prefix + "Activated Water Arrow effect");
                 }else {
@@ -48,7 +48,7 @@ public class BowCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.GUNPOWDER)) {
-                if(player.hasPermission("ccosmetics.bow.ash")) {
+                if(player.hasPermission("cc.bow.ash")) {
                     pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "ASH");
                     player.sendMessage(plugin.prefix + "Activated Ash Arrow effect");
                 }else {
@@ -56,7 +56,7 @@ public class BowCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.NETHER_STAR)) {
-                if(player.hasPermission("ccosmetics.bow.sparkle")) {
+                if(player.hasPermission("cc.bow.sparkle")) {
                     pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "WAX_OFF");
                     player.sendMessage(plugin.prefix + "Activated Sparkle Arrow effect");
                 }else {
@@ -64,7 +64,7 @@ public class BowCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.RED_DYE)) {
-                if(player.hasPermission("ccosmetics.bow.love")) {
+                if(player.hasPermission("cc.bow.love")) {
                     pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "HEART");
                     player.sendMessage(plugin.prefix + "Activated Love Arrow effect");
                 }else {
@@ -72,7 +72,7 @@ public class BowCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.DIAMOND_SWORD)) {
-                if(player.hasPermission("ccosmetics.bow.crit")) {
+                if(player.hasPermission("cc.bow.crit")) {
                     pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "CRIT");
                     player.sendMessage(plugin.prefix + "Activated Crit Arrow effect");
                 }else {
@@ -80,7 +80,7 @@ public class BowCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.DRAGON_BREATH)) {
-                if(player.hasPermission("ccosmetics.bow.dragon")) {
+                if(player.hasPermission("cc.bow.dragon")) {
                     pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "REVERSE_PORTAL");
                     player.sendMessage(plugin.prefix + "Activated Dragon Arrow effect");
                 }else {
@@ -88,7 +88,7 @@ public class BowCosmeticsGUIHandler implements Listener {
                 }
             }
             else if(e.getCurrentItem().getType().equals(Material.SPORE_BLOSSOM)) {
-                if(player.hasPermission("ccosmetics.bow.blossom")) {
+                if(player.hasPermission("cc.bow.blossom")) {
                     pdata.set(new NamespacedKey(plugin, "bow_effect"), PersistentDataType.STRING, "FALLING_SPORE_BLOSSOM");
                     player.sendMessage(plugin.prefix + "Activated Blossom Arrow effect");
                 }else {

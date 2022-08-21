@@ -11,7 +11,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 public class CosmeticsMenuHandler implements Listener {
 
-    private final CosmicCosmetics plugin = CosmicCosmetics.getPlugin(CosmicCosmetics.class);
 
     @EventHandler
     public void onMenuClick(InventoryClickEvent e) {
@@ -25,6 +24,10 @@ public class CosmeticsMenuHandler implements Listener {
             else if(e.getCurrentItem().getType().equals(Material.DIAMOND_BOOTS)) {
                 player.closeInventory();
                 TrailCosmeticsGUI.openTrailCosmeticsGUI(player);
+            }
+            else if(e.getCurrentItem().getType().equals(Material.DIAMOND_SWORD)) {
+                player.closeInventory();
+                KillCosmeticsGUI.openKillCosmeticsGUI(player);
             }
         }
     }

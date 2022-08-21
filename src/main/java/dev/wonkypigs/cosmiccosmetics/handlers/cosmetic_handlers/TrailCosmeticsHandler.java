@@ -30,7 +30,7 @@ public class TrailCosmeticsHandler implements Listener {
             if(effect.equalsIgnoreCase("ASH")){
                 amount = 20;
             }
-            player.getWorld().spawnParticle(Particle.valueOf(effect), player.getLocation(), amount, 0, 0, 0);
+            player.getWorld().spawnParticle(Particle.valueOf(effect), player.getLocation(), amount, 0, 0.1, 0);
         }
     }
 }

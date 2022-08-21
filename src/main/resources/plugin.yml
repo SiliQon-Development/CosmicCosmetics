@@ -7,7 +7,7 @@ authors: [WonkyPigs]
 description: A plugin that adds cool handlers to Minecraft
 commands:
   cosmiccosmetics:
-    permission: ccosmetics.menu
+    permission: cc.menu
     usage: /cosmiccosmetics
-    aliases: [cc, ccmenu, ccosmetics]
+    aliases: [cc, ccmenu, cosmetics]
     description: Opens the handlers menu
