@@ -24,6 +24,13 @@ public class CosmeticsMenu implements CommandExecutor {
                 Player player = (Player) sender;
                 openMainCosmeticsGUI(player);
             }else{
+                if(args[0].equalsIgnoreCase("info")) {
+                    sender.sendMessage(ChatColor.GREEN + "------------------------");
+                    sender.sendMessage(plugin.prefix);
+                    sender.sendMessage(ChatColor.BLUE + "Author: WonkyPigs");
+                    sender.sendMessage(ChatColor.BLUE + "Version: 1.0");
+                    sender.sendMessage(ChatColor.GREEN + "------------------------");
+                }
                 sender.sendMessage(plugin.prefix + plugin.getConfigValue("no-permission"));
             }
         }else{
@@ -55,6 +62,19 @@ public class CosmeticsMenu implements CommandExecutor {
         killCosmeticsMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         killCosmetics.setItemMeta(killCosmeticsMeta);
 
+        ItemStack spiralCosmetics = new ItemStack(Material.ENDER_PEARL, 1);
+        ItemMeta spiralCosmeticsMeta = spiralCosmetics.getItemMeta();
+        spiralCosmeticsMeta.setDisplayName(ChatColor.GREEN + "Spiral Effects");
+        spiralCosmeticsMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        spiralCosmetics.setItemMeta(spiralCosmeticsMeta);
+
+
+        ItemStack resetAllEffects = new ItemStack(Material.REDSTONE_BLOCK, 1);
+        ItemMeta resetAllEffectsMeta = resetAllEffects.getItemMeta();
+        resetAllEffectsMeta.setDisplayName(ChatColor.RED + "Reset All Effects");
+        resetAllEffectsMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        resetAllEffects.setItemMeta(resetAllEffectsMeta);
+
         ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE, 1);
         ItemMeta fillerMeta = filler.getItemMeta();
         fillerMeta.setDisplayName(" ");
@@ -75,9 +95,9 @@ public class CosmeticsMenu implements CommandExecutor {
         cosmeticsMenu.setItem(9, filler);
         cosmeticsMenu.setItem(10, trailCosmetics);
         cosmeticsMenu.setItem(11, filler);
-        cosmeticsMenu.setItem(12, filler);
-        cosmeticsMenu.setItem(13, killCosmetics);
-        cosmeticsMenu.setItem(14, filler);
+        cosmeticsMenu.setItem(12, killCosmetics);
+        cosmeticsMenu.setItem(13, filler);
+        cosmeticsMenu.setItem(14, spiralCosmetics);
         cosmeticsMenu.setItem(15, filler);
         cosmeticsMenu.setItem(16, bowCosmetics);
         cosmeticsMenu.setItem(17, filler);
@@ -86,7 +106,7 @@ public class CosmeticsMenu implements CommandExecutor {
         cosmeticsMenu.setItem(19, filler);
         cosmeticsMenu.setItem(20, filler);
         cosmeticsMenu.setItem(21, filler);
-        cosmeticsMenu.setItem(22, filler);
+        cosmeticsMenu.setItem(22, resetAllEffects);
         cosmeticsMenu.setItem(23, filler);
         cosmeticsMenu.setItem(24, filler);
         cosmeticsMenu.setItem(25, filler);

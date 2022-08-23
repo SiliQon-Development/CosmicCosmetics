@@ -27,5 +27,8 @@ public class PlayerJoinListener implements Listener {
         if(!pdata.has(new NamespacedKey(plugin, "kill_effect"), PersistentDataType.STRING)){
             pdata.set(new NamespacedKey(plugin, "kill_effect"), PersistentDataType.STRING, "NONE");
         }
+        if(!pdata.has(new NamespacedKey(plugin, "spiral_effect"), PersistentDataType.STRING)){
+            pdata.set(new NamespacedKey(plugin, "spiral_effect"), PersistentDataType.STRING, "NONE");
+        }
     }
 }

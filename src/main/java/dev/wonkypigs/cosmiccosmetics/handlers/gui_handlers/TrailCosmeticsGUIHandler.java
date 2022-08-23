@@ -95,7 +95,7 @@ public class TrailCosmeticsGUIHandler implements Listener {
                     player.sendMessage(plugin.prefix + plugin.getConfigValue("no-permission"));
                 }
             }
-            else if(e.getCurrentItem().getType().equals(Material.LEATHER_BOOTS)) {
+            else if(e.getCurrentItem().getType().equals(Material.RED_STAINED_GLASS_PANE)) {
                 pdata.set(new NamespacedKey(plugin, "trail_effect"), PersistentDataType.STRING, "NONE");
                 player.sendMessage(plugin.prefix + "Reset All Trail effects");
             }

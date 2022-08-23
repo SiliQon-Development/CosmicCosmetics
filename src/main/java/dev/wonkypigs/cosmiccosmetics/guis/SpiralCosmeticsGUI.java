@@ -9,20 +9,20 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class KillCosmeticsGUI {
+public class SpiralCosmeticsGUI {
 
-    public static void openKillCosmeticsGUI(Player player) {
+    public static void openSpiralCosmeticsGUI(Player player) {
         // Set up the menu
-        Inventory killCosmetics = Bukkit.createInventory(player, 27, ChatColor.RED + "" + ChatColor.BOLD + "Kill Effects");
+        Inventory killCosmetics = Bukkit.createInventory(player, 27, ChatColor.RED + "" + ChatColor.BOLD + "Spiral Effects");
 
         // All Menu Items
-        ItemStack bloodEffect = new ItemStack(Material.REDSTONE, 1);
-        ItemStack celebrationEffect = new ItemStack(Material.FIREWORK_ROCKET, 1);
+        ItemStack lavaEffect = new ItemStack(Material.LAVA_BUCKET, 1);
+        ItemStack ashEffect = new ItemStack(Material.GUNPOWDER, 1);
         ItemStack sparkleEffect = new ItemStack(Material.NETHER_STAR, 1);
         ItemStack musicalEffect = new ItemStack(Material.NOTE_BLOCK, 1);
-        ItemStack voidEffect = new ItemStack(Material.ENDER_PEARL, 1);
+        ItemStack waterEffect = new ItemStack(Material.WATER_BUCKET, 1);
         ItemStack loveEffect = new ItemStack(Material.RED_DYE, 1);
-        ItemStack cloudEffect = new ItemStack(Material.WHITE_WOOL, 1);
+        ItemStack happyEffect = new ItemStack(Material.EMERALD, 1);
         ItemStack blossomEffect = new ItemStack(Material.SPORE_BLOSSOM, 1);
         ItemStack dragonEffect = new ItemStack(Material.DRAGON_BREATH, 1);
         ItemStack resetEffect = new ItemStack(Material.RED_STAINED_GLASS_PANE, 1);
@@ -30,13 +30,13 @@ public class KillCosmeticsGUI {
         ItemStack backButton = new ItemStack(Material.BARRIER, 1);
 
         // Get All Menu Item Meta Data
-        ItemMeta bloodEffectMeta = bloodEffect.getItemMeta();
-        ItemMeta celebrationEffectMeta = celebrationEffect.getItemMeta();
+        ItemMeta lavaEffectMeta = lavaEffect.getItemMeta();
+        ItemMeta ashEffectMeta = ashEffect.getItemMeta();
         ItemMeta sparkleEffectMeta = sparkleEffect.getItemMeta();
         ItemMeta musicalEffectMeta = musicalEffect.getItemMeta();
-        ItemMeta voidEffectMeta = voidEffect.getItemMeta();
+        ItemMeta waterEffectMeta = waterEffect.getItemMeta();
         ItemMeta loveEffectMeta = loveEffect.getItemMeta();
-        ItemMeta cloudEffectMeta = cloudEffect.getItemMeta();
+        ItemMeta happyEffectMeta = happyEffect.getItemMeta();
         ItemMeta blossomEffectMeta = blossomEffect.getItemMeta();
         ItemMeta dragonEffectMeta = dragonEffect.getItemMeta();
         ItemMeta resetEffectMeta = resetEffect.getItemMeta();
@@ -44,27 +44,27 @@ public class KillCosmeticsGUI {
         ItemMeta backButtonmeta = backButton.getItemMeta();
 
         // Set All Menu Item Meta Data
-        bloodEffectMeta.setDisplayName(ChatColor.RED + "Blood Effect");
-        bloodEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        bloodEffect.setItemMeta(bloodEffectMeta);
-        celebrationEffectMeta.setDisplayName(ChatColor.GREEN + "Celebration Effect");
-        celebrationEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        celebrationEffect.setItemMeta(celebrationEffectMeta);
+        lavaEffectMeta.setDisplayName(ChatColor.RED + "Lava Effect");
+        lavaEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        lavaEffect.setItemMeta(lavaEffectMeta);
+        ashEffectMeta.setDisplayName(ChatColor.GRAY + "Ash Effect");
+        ashEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ashEffect.setItemMeta(ashEffectMeta);
         sparkleEffectMeta.setDisplayName(ChatColor.WHITE + "Sparkle Effect");
         sparkleEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         sparkleEffect.setItemMeta(sparkleEffectMeta);
         musicalEffectMeta.setDisplayName(ChatColor.YELLOW + "Musical Effect");
         musicalEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         musicalEffect.setItemMeta(musicalEffectMeta);
-        voidEffectMeta.setDisplayName(ChatColor.DARK_PURPLE + "Void Effect");
-        voidEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        voidEffect.setItemMeta(voidEffectMeta);
+        waterEffectMeta.setDisplayName(ChatColor.BLUE + "Water Effect");
+        waterEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        waterEffect.setItemMeta(waterEffectMeta);
         loveEffectMeta.setDisplayName(ChatColor.RED + "Love Effect");
         loveEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         loveEffect.setItemMeta(loveEffectMeta);
-        cloudEffectMeta.setDisplayName(ChatColor.WHITE + "Cloud Effect");
-        cloudEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        cloudEffect.setItemMeta(cloudEffectMeta);
+        happyEffectMeta.setDisplayName(ChatColor.GREEN + "Happy Effect");
+        happyEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        happyEffect.setItemMeta(happyEffectMeta);
         blossomEffectMeta.setDisplayName(ChatColor.GREEN + "Blossom Effect");
         blossomEffectMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         blossomEffect.setItemMeta(blossomEffectMeta);
@@ -93,13 +93,13 @@ public class KillCosmeticsGUI {
         killCosmetics.setItem(7, filler);
         killCosmetics.setItem(8, filler);
         // Row 2
-        killCosmetics.setItem(9, bloodEffect);
-        killCosmetics.setItem(10, celebrationEffect);
+        killCosmetics.setItem(9, lavaEffect);
+        killCosmetics.setItem(10, ashEffect);
         killCosmetics.setItem(11, sparkleEffect);
         killCosmetics.setItem(12, musicalEffect);
-        killCosmetics.setItem(13, voidEffect);
+        killCosmetics.setItem(13, waterEffect);
         killCosmetics.setItem(14, loveEffect);
-        killCosmetics.setItem(15, cloudEffect);
+        killCosmetics.setItem(15, happyEffect);
         killCosmetics.setItem(16, blossomEffect);
         killCosmetics.setItem(17, dragonEffect);
         // Row 3

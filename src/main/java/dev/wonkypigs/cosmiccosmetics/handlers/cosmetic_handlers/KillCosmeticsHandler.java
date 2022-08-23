@@ -2,7 +2,6 @@ package dev.wonkypigs.cosmiccosmetics.handlers.cosmetic_handlers;
 
 import dev.wonkypigs.cosmiccosmetics.CosmicCosmetics;
 import org.bukkit.*;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,8 +10,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-
-import java.util.Random;
 
 public class KillCosmeticsHandler implements Listener {
 

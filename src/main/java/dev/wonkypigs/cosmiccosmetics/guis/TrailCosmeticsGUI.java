@@ -1,6 +1,5 @@
 package dev.wonkypigs.cosmiccosmetics.guis;
 
-import dev.wonkypigs.cosmiccosmetics.CosmicCosmetics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -11,7 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class TrailCosmeticsGUI {
-
 
     public static void openTrailCosmeticsGUI(Player player) {
         // Set up the menu
@@ -27,7 +25,7 @@ public class TrailCosmeticsGUI {
         ItemStack critEffect = new ItemStack(Material.DIAMOND_SWORD, 1);
         ItemStack dragonEffect = new ItemStack(Material.DRAGON_BREATH, 1);
         ItemStack blossomEffect = new ItemStack(Material.SPORE_BLOSSOM, 1);
-        ItemStack resetEffect = new ItemStack(Material.LEATHER_BOOTS, 1);
+        ItemStack resetEffect = new ItemStack(Material.RED_STAINED_GLASS_PANE, 1);
         ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE, 1);
         ItemStack backButton = new ItemStack(Material.BARRIER, 1);
 

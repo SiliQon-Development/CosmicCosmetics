@@ -5,7 +5,6 @@ import dev.wonkypigs.cosmiccosmetics.commands.CosmeticsMenu;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -96,7 +95,7 @@ public class KillCosmeticsGUIHandler implements Listener {
                     player.sendMessage(plugin.prefix + plugin.getConfigValue("no-permission"));
                 }
             }
-            else if(e.getCurrentItem().getType().equals(Material.WOODEN_SWORD)) {
+            else if(e.getCurrentItem().getType().equals(Material.RED_STAINED_GLASS_PANE)) {
                 pdata.set(new NamespacedKey(plugin, "kill_effect"), PersistentDataType.STRING, "NONE");
                 player.sendMessage(plugin.prefix + "Reset All Kill effects");
             }

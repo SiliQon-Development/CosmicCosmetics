@@ -45,6 +45,8 @@ public final class CosmicCosmetics extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new TrailCosmeticsHandler(), this);
         getServer().getPluginManager().registerEvents(new KillCosmeticsGUIHandler(), this);
         getServer().getPluginManager().registerEvents(new KillCosmeticsHandler(), this);
+        getServer().getPluginManager().registerEvents(new SpiralCosmeticsGUIHandler(), this);
+        getServer().getPluginManager().registerEvents(new SpiralCosmeticsHandler(), this);
 
         getLogger().info("Listeners have been registered!");
     }
