@@ -23,15 +23,20 @@ public class CosmeticsMenu implements CommandExecutor {
             if(sender.hasPermission("cc.menu")){
                 Player player = (Player) sender;
                 openMainCosmeticsGUI(player);
-            }else{
-                if(args[0].equalsIgnoreCase("info")) {
-                    sender.sendMessage(ChatColor.GREEN + "------------------------");
-                    sender.sendMessage(plugin.prefix);
-                    sender.sendMessage(ChatColor.BLUE + "Author: WonkyPigs");
-                    sender.sendMessage(ChatColor.BLUE + "Version: 1.0");
-                    sender.sendMessage(ChatColor.GREEN + "------------------------");
+            }else {
+                if (args[0].equalsIgnoreCase("info")) {
+                    if (sender.hasPermission("cc.info")) {
+                        sender.sendMessage(ChatColor.GREEN + "------------------------");
+                        sender.sendMessage(plugin.prefix);
+                        sender.sendMessage(ChatColor.BLUE + "Author: WonkyPigs");
+                        sender.sendMessage(ChatColor.BLUE + "Version: 1.0");
+                        sender.sendMessage(ChatColor.GREEN + "------------------------");
+                    } else {
+                        sender.sendMessage(plugin.prefix + plugin.getConfigValue("no-permission"));
+                    }
+                } else {
+                    sender.sendMessage(plugin.prefix + plugin.getConfigValue("no-permission"));
                 }
-                sender.sendMessage(plugin.prefix + plugin.getConfigValue("no-permission"));
             }
         }else{
             sender.sendMessage(plugin.prefix + plugin.getConfigValue("must-be-a-player"));
