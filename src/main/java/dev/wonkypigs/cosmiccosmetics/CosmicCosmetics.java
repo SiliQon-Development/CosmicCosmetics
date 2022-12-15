@@ -5,14 +5,15 @@ import dev.wonkypigs.cosmiccosmetics.handlers.*;
 import dev.wonkypigs.cosmiccosmetics.handlers.cosmetic_handlers.*;
 import dev.wonkypigs.cosmiccosmetics.handlers.gui_handlers.*;
 import dev.wonkypigs.cosmiccosmetics.listeners.*;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.ChatColor;
+import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Objects;
 
 public final class CosmicCosmetics extends JavaPlugin {
-    public String prefix = ChatColor.translateAlternateColorCodes('&', "&8&l[&6CosmicCosmetics&8]&r ");
-
+    private static CosmicCosmetics instance;{ instance = this; }
+    public String prefix = getConfig().getString("prefix").replace("&", "§");
     // Plugin startup logic
     @Override
     public void onEnable() {
@@ -20,6 +21,14 @@ public final class CosmicCosmetics extends JavaPlugin {
         saveDefaultConfig();
         registerCommands();
         registerListeners();
+        registerPermissions();
+
+        int pluginId = 16202; // <-- Replace with the id of your plugin!
+        Metrics metrics = new Metrics(this, pluginId);
+
+        UpdateChecker updateChecker = new UpdateChecker();
+        updateChecker.check();
+
         getLogger().info("CosmicCosmetics has been enabled successfully!");
     }
 
@@ -31,8 +40,7 @@ public final class CosmicCosmetics extends JavaPlugin {
 
     // Registering all plugin commands
     private void registerCommands() {
-        Objects.requireNonNull(getCommand("cosmiccosmetics")).setExecutor(new CosmeticsMenu());
-        getLogger().info("Commands have been registered!");
+        getServer().getPluginCommand("cosmiccosmetics").setExecutor(new CosmeticsMenu());
     }
 
     // Registering all plugin listeners
@@ -47,8 +55,21 @@ public final class CosmicCosmetics extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new KillCosmeticsHandler(), this);
         getServer().getPluginManager().registerEvents(new SpiralCosmeticsGUIHandler(), this);
         getServer().getPluginManager().registerEvents(new SpiralCosmeticsHandler(), this);
+        getServer().getPluginManager().registerEvents(new UpdateChecker(), this);
+    }
 
-        getLogger().info("Listeners have been registered!");
+    private void registerPermissions() {
+        getServer().getPluginManager().addPermission(new Permission("cc.menu"));
+        getServer().getPluginManager().addPermission(new Permission("cc.info"));
+
+        getServer().getPluginManager().addPermission(new Permission("cc.bow"));
+        getServer().getPluginManager().addPermission(new Permission("cc.trail"));
+        getServer().getPluginManager().addPermission(new Permission("cc.kill"));
+        getServer().getPluginManager().addPermission(new Permission("cc.spiral"));
+    }
+
+    public static CosmicCosmetics getInstance() {
+        return instance;
     }
 
     // Getting values from config with color coding
