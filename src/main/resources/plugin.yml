@@ -4,7 +4,7 @@ main: dev.wonkypigs.cosmiccosmetics.CosmicCosmetics
 api-version: 1.19
 prefix: CosmicCosmetics
 authors: [WonkyPigs]
-description: A plugin that adds cool handlers to Minecraft
+description: A plugin that allows players to use cool EULA friendly cosmetics
 commands:
   cosmiccosmetics:
     permission: cc.menu

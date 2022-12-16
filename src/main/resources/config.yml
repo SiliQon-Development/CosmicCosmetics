@@ -7,3 +7,6 @@ messages:
 
   no-permission: "{prefix}&cYou do not have the permission to do that!"
   must-be-a-player: "{prefix}&cYou must be a player to do that!"
+
+settings:
+  update-checker: true

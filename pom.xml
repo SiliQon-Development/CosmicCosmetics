@@ -11,7 +11,7 @@
 
     <name>CosmicCosmetics</name>
 
-    <description>A that allows players to use cool EULA friendly cosmetics</description>
+    <description>A plugin that allows players to use cool EULA friendly cosmetics</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

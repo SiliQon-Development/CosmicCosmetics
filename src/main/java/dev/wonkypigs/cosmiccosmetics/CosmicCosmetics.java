@@ -9,8 +9,6 @@ import org.bstats.bukkit.Metrics;
 import org.bukkit.ChatColor;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.java.JavaPlugin;
-
-
 public final class CosmicCosmetics extends JavaPlugin {
     private static CosmicCosmetics instance;{ instance = this; }
     public String prefix = getConfig().getString("prefix").replace("&", "§");
