@@ -1,7 +1,7 @@
 name: CosmicCosmetics
 version: '${project.version}'
 main: dev.wonkypigs.cosmiccosmetics.CosmicCosmetics
-api-version: 1.19
+api-version: 1.13
 prefix: CosmicCosmetics
 authors: [WonkyPigs]
 description: A plugin that allows players to use cool EULA friendly cosmetics
