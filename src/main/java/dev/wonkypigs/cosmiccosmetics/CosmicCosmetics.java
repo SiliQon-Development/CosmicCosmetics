@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 public final class CosmicCosmetics extends JavaPlugin {
     private static CosmicCosmetics instance;{ instance = this; }
-    public String prefix = getConfig().getString("prefix").replace("&", "§");
+    public String prefix = getConfig().getString("messages.prefix").replace("&", "§");
     // Plugin startup logic
     @Override
     public void onEnable() {
@@ -102,7 +102,7 @@ public final class CosmicCosmetics extends JavaPlugin {
 
     // Getting values from config with color coding
     public String getConfigValue(String key) {
-        String ans = getConfig().getString(key);
+        String ans = getConfig().getString("messages." + key);
         return ChatColor.translateAlternateColorCodes('&', ans);
     }
 }
