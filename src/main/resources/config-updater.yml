@@ -1,0 +1,11 @@
+stringlists:
+
+ignored:
+  - "^config-version$"
+
+doublequotes:
+  - "^prefix$"
+  - "^no-permission$"
+  - "^must-be-a-player$"
+
+escape-newlines:

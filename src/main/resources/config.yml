@@ -2,11 +2,12 @@
 ####### MESSAGES #######
 ########################
 
-messages:
-  prefix: "&8&l[&6CosmicCosmetics&8]&r "
+prefix: "&8&l[&6CosmicCosmetics&8]&r "
 
-  no-permission: "{prefix}&cYou do not have the permission to do that!"
-  must-be-a-player: "{prefix}&cYou must be a player to do that!"
+no-permission: "{prefix}&cYou do not have the permission to do that!"
+must-be-a-player: "{prefix}&cYou must be a player to do that!"
 
-settings:
-  update-checker: true
+update-checker: true # Automatically check for updates for the plugin
+
+# DO NOT CHANGE THIS OR THE PLUGIN CONFIG WILL BREAK
+config-version: 1.1

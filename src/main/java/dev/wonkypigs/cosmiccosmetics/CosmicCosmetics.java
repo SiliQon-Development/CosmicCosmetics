@@ -1,6 +1,5 @@
 package dev.wonkypigs.cosmiccosmetics;
 
-import com.tchristofferson.configupdater.ConfigUpdater;
 import dev.wonkypigs.cosmiccosmetics.commands.*;
 import dev.wonkypigs.cosmiccosmetics.handlers.*;
 import dev.wonkypigs.cosmiccosmetics.handlers.cosmetic_handlers.*;
@@ -18,6 +17,7 @@ import java.util.Arrays;
 
 public final class CosmicCosmetics extends JavaPlugin {
     private static CosmicCosmetics instance;{ instance = this; }
+    public double confVersion = 1.1;
     public String prefix = getConfig().getString("messages.prefix").replace("&", "§");
     // Plugin startup logic
     @Override
@@ -26,26 +26,7 @@ public final class CosmicCosmetics extends JavaPlugin {
         saveDefaultConfig();
 
         // if config version is old, update it to current version
-        File configFile = new File(getDataFolder(), "config.yml");
-        YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
-
-        if (config.getDouble("config-version") != 1.0) {
-            config.set("config-version", 1.0);
-            try {
-                ConfigUpdater.update(this, "config.yml", configFile, Arrays.asList("none"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            // save changes
-            try {
-                config.save(configFile);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            // reload config
-            reloadConfig();
-            getLogger().info("Updated config file to latest version");
-        }
+        updateConfig();
 
         registerCommands();
         registerListeners();
@@ -94,6 +75,41 @@ public final class CosmicCosmetics extends JavaPlugin {
         getServer().getPluginManager().addPermission(new Permission("cc.trail"));
         getServer().getPluginManager().addPermission(new Permission("cc.kill"));
         getServer().getPluginManager().addPermission(new Permission("cc.spiral"));
+    }
+
+    public void updateConfig() {
+
+        YamlConfiguration config = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "config.yml"));
+
+        if (config.getDouble("config-version") <= 1.0) {
+            // rename config.yml to old-config.yml
+            File oldConfig = new File(getDataFolder(), "old-config.yml");
+            File configFile = new File(getDataFolder(), "config.yml");
+            configFile.renameTo(oldConfig);
+
+            // create new config.yml
+            saveDefaultConfig();
+            getConfig().set("config-version", confVersion);
+            getLogger().severe("==========================");
+            getLogger().info("You were using an old format of");
+            getLogger().info("the config.yml file. It has been");
+            getLogger().info("updated to the current version.");
+            getLogger().info("Make sure to update all values!");
+            getLogger().severe("==========================");
+            return;
+        }
+
+        config = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "config.yml"));
+
+        if (config.getDouble("config-version") != confVersion) {
+            try {
+                new ConfigUpdater(this, "config.yml", "config-updater.yml").update();
+            } catch (IOException e) {
+                getLogger().severe("Could not update config.yml!");
+                e.printStackTrace();
+            }
+        }
+        reloadConfig();
     }
 
     public static CosmicCosmetics getInstance() {
