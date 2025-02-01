@@ -34,7 +34,7 @@ public final class CosmicCosmetics extends JavaPlugin {
 
     public NamespacedKey customItemKey = new NamespacedKey(this, "cosmiccosmetics-custom-item-for-menus");
     public String PREFIX = "&b[&aCosmetics&b]&r ";
-    public final String SPIGOT_RESOURCE_ID = "106729";
+    public final String SPIGOT_RESOURCE_ID = "104768";
 
     private PaperCommandManager commandManager;
     public GUIManager guiManager;
