@@ -82,7 +82,7 @@ public final class CosmicCosmetics extends JavaPlugin {
         registerCommands();
 
         // check for plugin updates
-        new UpdateChecker(this, UpdateCheckSource.CUSTOM_URL, SPIGOT_RESOURCE_ID)
+        new UpdateChecker(this, UpdateCheckSource.SPIGOT, SPIGOT_RESOURCE_ID)
                 .setNotifyOpsOnJoin(config.getNotifyUpdates())
                 .setChangelogLink(Integer.parseInt(SPIGOT_RESOURCE_ID))
                 .setDownloadLink(Integer.parseInt(SPIGOT_RESOURCE_ID))

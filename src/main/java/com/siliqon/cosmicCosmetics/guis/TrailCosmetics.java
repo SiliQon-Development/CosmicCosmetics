@@ -85,7 +85,11 @@ public class TrailCosmetics extends InventoryGUI {
 
     private InventoryButton lockedEffectButton(String name) {
         return new InventoryButton()
-                .creator(player -> makeSimpleItem(Material.BARRIER, plugin.lang.getEffectNotUnlockedName().replace("%effect_name%", name), 1));
+                .creator(player -> makeSimpleItem(Material.BARRIER, plugin.lang.getEffectNotUnlockedName().replace("%effect_name%", name), 1))
+                .consumer(event -> {
+                    int a = 0;
+                    a = 1;
+                });
     }
 
     private InventoryButton resetEffectButton() {

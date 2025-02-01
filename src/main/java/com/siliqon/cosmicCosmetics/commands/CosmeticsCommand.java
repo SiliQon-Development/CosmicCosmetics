@@ -7,6 +7,7 @@ import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Subcommand;
 import com.siliqon.cosmicCosmetics.CosmicCosmetics;
 import com.siliqon.cosmicCosmetics.guis.MainWindow;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -39,6 +40,6 @@ public class CosmeticsCommand extends BaseCommand {
     @Subcommand("version")
     @CommandPermission("cosmetics.version")
     public void versionCommand(CommandSender sender) {
-        sender.sendMessage("&bThe current plugin version is "+plugin.getName() + " &d"+plugin.getDescription().getVersion());
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&bThe current plugin version is "+plugin.getName() + " &d"+plugin.getDescription().getVersion()));
     }
 }
