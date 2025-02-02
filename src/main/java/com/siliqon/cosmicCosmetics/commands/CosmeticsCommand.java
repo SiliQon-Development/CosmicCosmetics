@@ -28,7 +28,7 @@ public class CosmeticsCommand extends BaseCommand {
     @CommandPermission("cosmetics.toggle")
     public void toggleCosmeticsCommand(Player player) {
         Boolean enabled = plugin.cosmeticsEnabled.get(player);
-        if (enabled) {
+        if (enabled == null || enabled) {
             sendMessage(player, plugin.lang.getCosmeticsDisabledOther(), true);
             plugin.cosmeticsEnabled.put(player, false);
         } else {
