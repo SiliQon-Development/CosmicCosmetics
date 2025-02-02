@@ -8,6 +8,7 @@ import com.siliqon.cosmicCosmetics.data.ActiveEffectData;
 import com.siliqon.cosmicCosmetics.files.*;
 import com.siliqon.cosmicCosmetics.handlers.effects.Kill;
 import com.siliqon.cosmicCosmetics.listeners.PlayerListener;
+import com.siliqon.cosmicCosmetics.listeners.ServerListener;
 import com.siliqon.cosmicCosmetics.utils.general.storage;
 import com.siliqon.cosmicCosmetics.utils.gui.*;
 import net.milkbowl.vault.chat.Chat;
@@ -82,12 +83,14 @@ public final class CosmicCosmetics extends JavaPlugin {
         registerCommands();
 
         // check for plugin updates
-        new UpdateChecker(this, UpdateCheckSource.SPIGOT, SPIGOT_RESOURCE_ID)
+        new UpdateChecker(this, UpdateCheckSource.SPIGET, SPIGOT_RESOURCE_ID)
                 .setNotifyOpsOnJoin(config.getNotifyUpdates())
-                .setChangelogLink(Integer.parseInt(SPIGOT_RESOURCE_ID))
-                .setDownloadLink(Integer.parseInt(SPIGOT_RESOURCE_ID))
-                .checkEveryXHours(24)
-                .checkNow();
+                .setDownloadLink("https://www.spigotmc.org/resources/"+SPIGOT_RESOURCE_ID)
+                .checkEveryXHours(12)
+                .checkNow()
+                .onFail(((commandSenders, e) -> {
+                    logError("Failed to check for plugin updates!");
+                }));
 
         log(PLUGIN_VERSION+ " enabled successfully");
     }
@@ -113,9 +116,10 @@ public final class CosmicCosmetics extends JavaPlugin {
     }
 
     private void registerListeners() {
+        Bukkit.getPluginManager().registerEvents(guiListener, this);
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
         Bukkit.getPluginManager().registerEvents(new Kill(), this);
-        Bukkit.getPluginManager().registerEvents(guiListener, this);
+        Bukkit.getPluginManager().registerEvents(new ServerListener(), this);
     }
 
     private void setupVault() {

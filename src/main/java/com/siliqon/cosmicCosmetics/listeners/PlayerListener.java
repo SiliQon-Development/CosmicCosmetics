@@ -3,6 +3,7 @@ package com.siliqon.cosmicCosmetics.listeners;
 import com.siliqon.cosmicCosmetics.CosmicCosmetics;
 import com.siliqon.cosmicCosmetics.data.ActiveEffectData;
 import com.siliqon.cosmicCosmetics.data.EffectForm;
+import com.siliqon.cosmicCosmetics.handlers.effects.Halo;
 import com.siliqon.cosmicCosmetics.handlers.effects.Projectile;
 import com.siliqon.cosmicCosmetics.handlers.effects.Trail;
 import com.siliqon.cosmicCosmetics.utils.general.storage;
@@ -42,6 +43,9 @@ public class PlayerListener implements Listener {
                 }
                 case TRAIL: {
                     Trail.startForPlayer(player);
+                }
+                case HALO: {
+                    Halo.startForPlayer(player);
                 }
             }
         }
