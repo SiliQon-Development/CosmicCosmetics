@@ -8,7 +8,7 @@ import java.util.List;
 @Configuration
 public class LangFile {
 
-    private String prefix = "&8[&6CosmicCosmetics&8]&r ";
+    private String prefix = "&b&lCosmetics &7> &r ";
 
     @Comment({" ", "main menu"})
     private String trailEffectsItemName = "&6Trail Effects";

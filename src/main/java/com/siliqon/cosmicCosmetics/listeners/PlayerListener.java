@@ -2,10 +2,6 @@ package com.siliqon.cosmicCosmetics.listeners;
 
 import com.siliqon.cosmicCosmetics.CosmicCosmetics;
 import com.siliqon.cosmicCosmetics.data.ActiveEffectData;
-import com.siliqon.cosmicCosmetics.data.EffectForm;
-import com.siliqon.cosmicCosmetics.handlers.effects.Halo;
-import com.siliqon.cosmicCosmetics.handlers.effects.Projectile;
-import com.siliqon.cosmicCosmetics.handlers.effects.Trail;
 import com.siliqon.cosmicCosmetics.utils.general.storage;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,34 +17,9 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-
         Pair<Boolean, ActiveEffectData> pdata = storage.getPlayerData(player.getUniqueId());
 
-        if (pdata == null) {
-            plugin.cosmeticsEnabled.put(player, true);
-            return;
-        };
-        plugin.cosmeticsEnabled.put(player, pdata.getFirst());
-
-        if (pdata.getSecond() == null) return;
-        plugin.playerActiveEffects.put(player, pdata.getSecond());
-
-        // resume any active effect tasks
-        ActiveEffectData ped = plugin.playerActiveEffects.get(player);
-        for (EffectForm form : ped.getEffects().keySet()) {
-            if (ped.getTaskIds().containsKey(form)) continue;
-            switch (form) {
-                case PROJECTILE: {
-                    Projectile.startForPlayer(player);
-                }
-                case TRAIL: {
-                    Trail.startForPlayer(player);
-                }
-                case HALO: {
-                    Halo.startForPlayer(player);
-                }
-            }
-        }
+        plugin.setupPlayerData(player, pdata);
     }
 
     @EventHandler

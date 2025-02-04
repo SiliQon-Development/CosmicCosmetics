@@ -5,8 +5,12 @@ import com.jeff_media.updatechecker.UpdateCheckSource;
 import com.jeff_media.updatechecker.UpdateChecker;
 import com.siliqon.cosmicCosmetics.commands.CosmeticsCommand;
 import com.siliqon.cosmicCosmetics.data.ActiveEffectData;
+import com.siliqon.cosmicCosmetics.data.EffectForm;
 import com.siliqon.cosmicCosmetics.files.*;
+import com.siliqon.cosmicCosmetics.handlers.effects.Halo;
 import com.siliqon.cosmicCosmetics.handlers.effects.Kill;
+import com.siliqon.cosmicCosmetics.handlers.effects.Projectile;
+import com.siliqon.cosmicCosmetics.handlers.effects.Trail;
 import com.siliqon.cosmicCosmetics.listeners.PlayerListener;
 import com.siliqon.cosmicCosmetics.listeners.ServerListener;
 import com.siliqon.cosmicCosmetics.utils.general.storage;
@@ -19,6 +23,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import redempt.crunch.data.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +39,7 @@ public final class CosmicCosmetics extends JavaPlugin {
     public final String PLUGIN_VERSION = "v"+getDescription().getVersion();
 
     public NamespacedKey customItemKey = new NamespacedKey(this, "cosmiccosmetics-custom-item-for-menus");
-    public String PREFIX = "&b[&aCosmetics&b]&r ";
+    public String PREFIX = "&b&lCosmetics &7> &r ";
     public final String SPIGOT_RESOURCE_ID = "104768";
 
     private PaperCommandManager commandManager;
@@ -93,6 +98,7 @@ public final class CosmicCosmetics extends JavaPlugin {
                 }));
 
         log(PLUGIN_VERSION+ " enabled successfully");
+        getOnlinePlayerData();
     }
 
     @Override
@@ -120,6 +126,41 @@ public final class CosmicCosmetics extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
         Bukkit.getPluginManager().registerEvents(new Kill(), this);
         Bukkit.getPluginManager().registerEvents(new ServerListener(), this);
+    }
+
+    private void getOnlinePlayerData() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            Pair<Boolean, ActiveEffectData> pdata = storage.getPlayerData(player.getUniqueId());
+            setupPlayerData(player, pdata);
+        }
+    }
+
+    public void setupPlayerData(Player player, Pair<Boolean, ActiveEffectData> pdata) {
+        if (pdata == null) {
+            cosmeticsEnabled.put(player, true);
+            return;
+        };
+        cosmeticsEnabled.put(player, pdata.getFirst());
+
+        if (pdata.getSecond() == null) return;
+        playerActiveEffects.put(player, pdata.getSecond());
+
+        // resume any active effect tasks
+        ActiveEffectData ped = playerActiveEffects.get(player);
+        for (EffectForm form : ped.getEffects().keySet()) {
+            if (ped.getTaskIds().containsKey(form)) continue;
+            switch (form) {
+                case PROJECTILE: {
+                    Projectile.startForPlayer(player);
+                }
+                case TRAIL: {
+                    Trail.startForPlayer(player);
+                }
+                case HALO: {
+                    Halo.startForPlayer(player);
+                }
+            }
+        }
     }
 
     private void setupVault() {
