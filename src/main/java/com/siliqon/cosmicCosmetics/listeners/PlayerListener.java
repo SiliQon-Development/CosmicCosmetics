@@ -13,6 +13,7 @@ import redempt.crunch.data.Pair;
 
 import static com.siliqon.cosmicCosmetics.utils.Effects.getEffectsEnabled;
 import static com.siliqon.cosmicCosmetics.utils.Effects.getPlayerActiveEffectData;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.log;
 
 public class PlayerListener implements Listener {
 
@@ -41,6 +42,7 @@ public class PlayerListener implements Listener {
                 }
             }
         }
+        if (plugin.debugLevel >= 2) log("Stopped ongoing tasks for " + player.getName());
 
         // save data and let go of cache
         Storage.savePlayerData(player.getUniqueId(), enabled, pdata);

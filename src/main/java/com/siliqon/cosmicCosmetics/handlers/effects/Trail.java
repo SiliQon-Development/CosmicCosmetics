@@ -11,6 +11,7 @@ import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
 import static com.siliqon.cosmicCosmetics.utils.Effects.*;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.log;
 
 public class Trail {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
@@ -51,5 +52,6 @@ public class Trail {
 
         ActiveEffectData pdata = getPlayerActiveEffectData(player);
         pdata.addTaskId(EffectForm.TRAIL, taskId);
+        if (plugin.debugLevel >= 2) log("Registered TRAIL task for "+player.getName());
     }
 }

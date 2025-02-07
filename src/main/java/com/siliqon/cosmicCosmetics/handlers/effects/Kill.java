@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 import static com.siliqon.cosmicCosmetics.utils.Effects.*;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.log;
 
 public class Kill implements Listener {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
@@ -50,5 +51,6 @@ public class Kill implements Listener {
                     player.getLocation().add(0,playerLocYOffset,0),
                     count, xOffset, yOffset, zOffset, speed);
         }
+        if (plugin.debugLevel >= 2) log("Showed kill effect of " + player.getName());
     }
 }

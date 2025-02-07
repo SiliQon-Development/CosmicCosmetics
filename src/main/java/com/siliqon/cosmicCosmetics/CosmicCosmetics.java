@@ -59,18 +59,14 @@ public final class CosmicCosmetics extends JavaPlugin {
     public Permission vaultPerms = null;
     public Chat vaultChat = null;
 
+    public int debugLevel = 0;
+
     public Map<UUID, ActiveEffectData> playerActiveEffects = new HashMap<>();
     public Map<UUID, Boolean> cosmeticsEnabled = new HashMap<>();
 
     @Override
     public void onEnable() {
         initFiles();
-
-        effectNameRegistry = EffectNameRegistry.getInstance();
-        effectDescriptionRegistry = EffectDescriptionRegistry.getInstance();
-        effectMaterialRegistry = EffectMaterialRegistry.getInstance();
-        effectParticleRegistry = EffectParticleRegistry.getInstance();
-        effectDensityRegistry = EffectDensityRegistry.getInstance();
 
         // plugin enabled?
         if (!config.getPluginEnabled()) {
@@ -79,14 +75,22 @@ public final class CosmicCosmetics extends JavaPlugin {
             return;
         }
 
+        debugLevel = config.getDebugLevel();
+
+        effectNameRegistry = EffectNameRegistry.getInstance();
+        effectDescriptionRegistry = EffectDescriptionRegistry.getInstance();
+        effectMaterialRegistry = EffectMaterialRegistry.getInstance();
+        effectParticleRegistry = EffectParticleRegistry.getInstance();
+        effectDensityRegistry = EffectDensityRegistry.getInstance();
+
         Storage.load();
 
         // vault integration
         if (Bukkit.getPluginManager().isPluginEnabled("Vault")) {
-            log("Vault found. Initiating integration process...");
+            if (debugLevel >=1) log("Vault found. Initiating integration process...");
             setupVault();
         } else {
-            log("Vault not found! Skipping integration process...");
+            if (debugLevel >=1) log("Vault not found! Skipping integration process...");
         }
 
         // gui manager
@@ -125,10 +129,12 @@ public final class CosmicCosmetics extends JavaPlugin {
             }
             return nameList;
         });
+        if (debugLevel >= 2) log("Registered command completions");
     }
 
     private void registerCommands() {
         commandManager.registerCommand(new CosmeticsCommand());
+        if (debugLevel >= 2) log("Registered commands");
     }
 
     private void registerListeners() {
@@ -136,6 +142,7 @@ public final class CosmicCosmetics extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
         Bukkit.getPluginManager().registerEvents(new Kill(), this);
         Bukkit.getPluginManager().registerEvents(new ServerListener(), this);
+        if (debugLevel >= 2) log("Registered listeners");
     }
 
     private void getOnlinePlayerData() {
@@ -165,6 +172,8 @@ public final class CosmicCosmetics extends JavaPlugin {
                 }
             }
         }
+
+        if (debugLevel >= 2) log("Processed player data for "+player.getName());
     }
 
     private void setupVault() {
@@ -173,10 +182,10 @@ public final class CosmicCosmetics extends JavaPlugin {
         if (rspChat != null && rspPerm != null) {
             vaultChat = rspChat.getProvider();
             vaultPerms = rspPerm.getProvider();
-            log("Vault integration successful.");
+            if (debugLevel >=1) log("Vault integration successful.");
             vaultEnabled = true;
         } else {
-            logError("Failed to load Vault API!");
+            if (debugLevel >=1) logError("Failed to load Vault API!");
         }
     }
 

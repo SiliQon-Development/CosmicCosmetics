@@ -10,6 +10,7 @@ import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
 import static com.siliqon.cosmicCosmetics.utils.Effects.*;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.log;
 
 public class Projectile {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
@@ -42,5 +43,6 @@ public class Projectile {
 
         ActiveEffectData pdata = getPlayerActiveEffectData(player);
         pdata.addTaskId(EffectForm.PROJECTILE, taskId);
+        if (plugin.debugLevel >= 2) log("Registered PROJECTILE task for "+player.getName());
     }
 }

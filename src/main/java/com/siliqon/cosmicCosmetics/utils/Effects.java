@@ -50,6 +50,7 @@ public class Effects {
         ActiveEffectData playerData = getPlayerActiveEffectData(player);
         if (playerData == null) return null;
 
+        if (plugin.debugLevel >=2) log("Got active effects (" + form + ") for "+player.getName());
         return playerData.getEffects().get(form);
     }
     public static String getActiveEffectName(Player player, EffectForm form) {
@@ -64,6 +65,8 @@ public class Effects {
     public static Map<EffectForm, EffectType> getActiveEffects(Player player) {
         ActiveEffectData playerData = getPlayerActiveEffectData(player);
         if (playerData == null) return new HashMap<>();
+
+        if (plugin.debugLevel >= 2) log("Retrieved active effects for "+ player.getName());
         return playerData.getEffects();
     }
 
@@ -99,6 +102,7 @@ public class Effects {
             }
             // kill is event based
         }
+        if (plugin.debugLevel >= 2) log("Set active effect ("+form+") for " + player.getName());
     }
 
     public static void removeActiveEffect(Player player, EffectForm form) {
@@ -106,6 +110,7 @@ public class Effects {
         if (playerData == null) return;
 
         playerData.removeEffect(form);
+        if (plugin.debugLevel >= 2) log("Removed effect ("+form+") for " + player.getName());
     }
     public static void removeAllActiveEffects(Player player) {
         Map<EffectForm, EffectType> current = new HashMap<>(getActiveEffects(player));

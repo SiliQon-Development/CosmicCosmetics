@@ -12,6 +12,8 @@ import org.bukkit.ChatColor;
 import java.io.File;
 import java.nio.file.Path;
 
+import static com.siliqon.cosmicCosmetics.utils.Messaging.log;
+
 public class Files {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
 
@@ -32,6 +34,7 @@ public class Files {
         plugin.config = YamlConfigurations.update(
                 configFile, MainConfig.class, properties
         );
+        if (plugin.debugLevel >= 2) log("Initialized config.yml file");
     }
     private static void initLangFile() {
         YamlConfigurationProperties properties = ConfigLib.BUKKIT_DEFAULT_PROPERTIES.toBuilder()
@@ -52,6 +55,7 @@ public class Files {
                 langFile, LangFile.class, properties
         );
         plugin.PREFIX = ChatColor.translateAlternateColorCodes('&', plugin.lang.getPrefix());
+        if (plugin.debugLevel >= 2) log("Initialized lang.yml file");
     }
 
     public static void initFiles() {

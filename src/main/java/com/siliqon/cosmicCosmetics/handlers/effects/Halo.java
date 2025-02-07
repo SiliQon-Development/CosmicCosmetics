@@ -65,5 +65,6 @@ public class Halo {
 
         ActiveEffectData pdata = getPlayerActiveEffectData(player);
         pdata.addTaskId(EffectForm.HALO, taskId);
+        if (plugin.debugLevel >= 2) log("Registered HALO task for "+player.getName());
     }
 }

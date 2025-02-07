@@ -17,6 +17,7 @@ import java.util.UUID;
 
 import static com.siliqon.cosmicCosmetics.utils.Effects.getEffectsEnabled;
 import static com.siliqon.cosmicCosmetics.utils.Effects.getPlayerActiveEffectData;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.log;
 import static com.siliqon.cosmicCosmetics.utils.Messaging.logError;
 
 public class Storage {
@@ -33,11 +34,12 @@ public class Storage {
         }
 
         data = YamlConfiguration.loadConfiguration(dataFile);
+        if (plugin.debugLevel >= 2) log("Loaded data.yml file");
     }
 
-    public static Pair<Boolean, ActiveEffectData> getPlayerData(UUID player) {
-        ActiveEffectData pdata = new ActiveEffectData(player, new HashMap<>(), new HashMap<>());
-        ConfigurationSection section = data.getConfigurationSection(player.toString());
+    public static Pair<Boolean, ActiveEffectData> getPlayerData(UUID playerUUID) {
+        ActiveEffectData pdata = new ActiveEffectData(playerUUID, new HashMap<>(), new HashMap<>());
+        ConfigurationSection section = data.getConfigurationSection(playerUUID.toString());
 
         if (section == null) return new Pair<>(false, pdata);
 
@@ -53,6 +55,7 @@ public class Storage {
         }
         pdata.setEffects(activeEffects);
 
+        if (plugin.debugLevel >= 2) log("Retrieved data for " + Bukkit.getPlayer(playerUUID).getName());
         return new Pair<>(enabled, pdata);
     }
     public static void savePlayerData(UUID playerUUID, Boolean enabled, ActiveEffectData pdata) {
@@ -79,6 +82,7 @@ public class Storage {
             logError("Failed to save player data to file");
             e.printStackTrace();
         }
+        if (plugin.debugLevel >= 2) log("Saved data for " + Bukkit.getPlayer(playerUUID).getName());
     }
     public static void saveAllData(boolean log) {
         Bukkit.getOnlinePlayers().forEach(player ->
@@ -90,5 +94,6 @@ public class Storage {
             logError("Failed to save all data to file");
             e.printStackTrace();
         }
+        if (plugin.debugLevel >= 1) log("Saved all data");
     }
 }
