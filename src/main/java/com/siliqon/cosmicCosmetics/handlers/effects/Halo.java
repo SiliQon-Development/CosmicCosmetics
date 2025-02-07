@@ -64,7 +64,6 @@ public class Halo {
         }, 0L, 1L);
 
         ActiveEffectData pdata = getPlayerActiveEffectData(player);
-        log("H "+taskId);
         pdata.addTaskId(EffectForm.HALO, taskId);
     }
 }

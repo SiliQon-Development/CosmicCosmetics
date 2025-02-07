@@ -43,9 +43,7 @@ public class ActiveEffectData {
     }
 
     public void removeEffect(EffectForm form) {
-        log("R "+form);
         if (taskIds.containsKey(form)) {
-            log("T "+form);
             for (int taskId : taskIds.get(form)) {
                 plugin.getServer().getScheduler().cancelTask(taskId);
             }
@@ -60,7 +58,6 @@ public class ActiveEffectData {
 
     public void addTaskId(EffectForm form, int taskId) {
         taskIds.computeIfAbsent(form, k -> new ArrayList<>());
-        log(form.name());
         taskIds.get(form).add(taskId);
     }
 }

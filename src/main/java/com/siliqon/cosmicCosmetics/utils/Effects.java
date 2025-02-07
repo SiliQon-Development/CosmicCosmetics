@@ -110,7 +110,6 @@ public class Effects {
     public static void removeAllActiveEffects(Player player) {
         Map<EffectForm, EffectType> current = new HashMap<>(getActiveEffects(player));
         for (EffectForm form : current.keySet()) {
-            log(form.toString());
             removeActiveEffect(player, form);
         }
     }
