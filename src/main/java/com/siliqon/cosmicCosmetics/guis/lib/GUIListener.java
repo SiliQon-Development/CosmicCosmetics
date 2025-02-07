@@ -1,4 +1,4 @@
-package com.siliqon.cosmicCosmetics.utils.gui;
+package com.siliqon.cosmicCosmetics.guis.lib;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

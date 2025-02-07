@@ -1,54 +1,55 @@
 package com.siliqon.cosmicCosmetics.handlers.effects;
 
 import com.siliqon.cosmicCosmetics.CosmicCosmetics;
-import com.siliqon.cosmicCosmetics.data.ActiveEffectData;
-import com.siliqon.cosmicCosmetics.data.EffectForm;
-import com.siliqon.cosmicCosmetics.data.EffectType;
+import com.siliqon.cosmicCosmetics.custom.ActiveEffectData;
+import com.siliqon.cosmicCosmetics.enums.EffectForm;
+import com.siliqon.cosmicCosmetics.enums.EffectType;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
+import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
-import static com.siliqon.cosmicCosmetics.utils.general.effects.effectDensity;
-import static com.siliqon.cosmicCosmetics.utils.general.effects.effectParticles;
+import static com.siliqon.cosmicCosmetics.utils.Effects.*;
 
 public class Trail {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
 
     public static void startForPlayer(Player player) {
-        ActiveEffectData pdata = plugin.playerActiveEffects.get(player);
-        if (pdata == null) return;
-        if (pdata.getTaskIds().containsKey(EffectForm.TRAIL)) Bukkit.getScheduler().cancelTask(pdata.getTaskIds().get(EffectForm.TRAIL));
-
-        EffectType effectType = pdata.getEffects().get(EffectForm.TRAIL);
+        EffectType effectType = getActiveEffect(player, EffectForm.TRAIL);
         if (effectType == null) return;
 
         int taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
             if (player.isDead() || !player.isValid() || !player.isOnline() || !player.getWorld().getPlayers().contains(player)) // TODO check if player is still
                 return;
             for (Player otherPlayer : Bukkit.getOnlinePlayers()) {
-                if (otherPlayer != player && (plugin.cosmeticsEnabled.get(otherPlayer) == null || !plugin.cosmeticsEnabled.get(otherPlayer)))
+                if (otherPlayer != player && !getEffectsEnabled(otherPlayer))
                     continue;
 
+                Particle particle = getEffectParticle(effectType);
+                Location loc = player.getLocation().add(0,.1,.0);
+                int density = getEffectDensity(effectType);
+
                 if (effectType == EffectType.RAINBOW) {
+                    int size = 1;
+                    int r = (int) (Math.random() * 256), g = (int) (Math.random() * 256), b = (int) (Math.random() * 256);
+
                     otherPlayer.spawnParticle(
-                            effectParticles.get(effectType),
-                            player.getLocation().add(0, 0.1, 0),
-                            effectDensity.get(effectType),
-                            new Particle.DustOptions(Color.fromRGB((int) (Math.random() * 256),
-                                    (int) (Math.random() * 256), (int) (Math.random() * 256)), 1f)
+                            particle, loc, density,
+                            new Particle.DustOptions(Color.fromRGB(r, g, b), size)
                     );
                     continue;
                 }
+
+                double xOffset = .05, yOffset = .05, zOffset = .05, speed = .01;
                 otherPlayer.spawnParticle(
-                        effectParticles.get(effectType),
-                        player.getLocation().add(0, 0.1, 0),
-                        (int) effectDensity.get(effectType),
-                        0.05, 0.05, 0.05, 0.01
+                        particle, loc, density,
+                        xOffset, yOffset, zOffset, speed
                 );
             }
         }, 0L, 2L);
 
+        ActiveEffectData pdata = getPlayerActiveEffectData(player);
         pdata.addTaskId(EffectForm.TRAIL, taskId);
     }
 }

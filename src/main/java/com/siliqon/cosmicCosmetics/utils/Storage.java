@@ -1,9 +1,9 @@
-package com.siliqon.cosmicCosmetics.utils.general;
+package com.siliqon.cosmicCosmetics.utils;
 
 import com.siliqon.cosmicCosmetics.CosmicCosmetics;
-import com.siliqon.cosmicCosmetics.data.ActiveEffectData;
-import com.siliqon.cosmicCosmetics.data.EffectForm;
-import com.siliqon.cosmicCosmetics.data.EffectType;
+import com.siliqon.cosmicCosmetics.custom.ActiveEffectData;
+import com.siliqon.cosmicCosmetics.enums.EffectForm;
+import com.siliqon.cosmicCosmetics.enums.EffectType;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -15,13 +15,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static com.siliqon.cosmicCosmetics.utils.general.messaging.logError;
+import static com.siliqon.cosmicCosmetics.utils.Effects.getEffectsEnabled;
+import static com.siliqon.cosmicCosmetics.utils.Effects.getPlayerActiveEffectData;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.logError;
 
-public class storage {
+public class Storage {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
     private static File dataFile; public static FileConfiguration data;
 
-    public storage() {}
+    public Storage() {}
 
     public static void load() {
         dataFile = new File(plugin.getDataFolder(), "data.yml");
@@ -34,22 +36,24 @@ public class storage {
     }
 
     public static Pair<Boolean, ActiveEffectData> getPlayerData(UUID player) {
+        ActiveEffectData pdata = new ActiveEffectData(player, new HashMap<>(), new HashMap<>());
         ConfigurationSection section = data.getConfigurationSection(player.toString());
 
-        if (section == null) return null;
+        if (section == null) return new Pair<>(false, pdata);
 
         boolean enabled = false;
         if (section.contains("enabled")) enabled = section.getBoolean("enabled");
 
         ConfigurationSection effectsData = section.getConfigurationSection("effects");
-        if (effectsData == null) return new Pair<>(enabled, null);
+        if (effectsData == null) return new Pair<>(enabled, pdata);
 
         Map<EffectForm, EffectType> activeEffects = new HashMap<>();
         for (String key : effectsData.getKeys(false)) {
             activeEffects.put(EffectForm.valueOf(key), EffectType.valueOf(effectsData.getString(key)));
         }
+        pdata.setEffects(activeEffects);
 
-        return new Pair<>(enabled, new ActiveEffectData(player, activeEffects, new HashMap<>()));
+        return new Pair<>(enabled, pdata);
     }
     public static void savePlayerData(UUID playerUUID, Boolean enabled, ActiveEffectData pdata) {
         data.set(playerUUID.toString(), null);
@@ -78,7 +82,7 @@ public class storage {
     }
     public static void saveAllData(boolean log) {
         Bukkit.getOnlinePlayers().forEach(player ->
-                savePlayerData(player.getUniqueId(), plugin.cosmeticsEnabled.get(player), plugin.playerActiveEffects.get(player))
+                savePlayerData(player.getUniqueId(), getEffectsEnabled(player), getPlayerActiveEffectData(player))
         );
         try {
             data.save(dataFile);

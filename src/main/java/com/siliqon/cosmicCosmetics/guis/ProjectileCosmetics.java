@@ -1,10 +1,10 @@
 package com.siliqon.cosmicCosmetics.guis;
 
 import com.siliqon.cosmicCosmetics.CosmicCosmetics;
-import com.siliqon.cosmicCosmetics.data.EffectForm;
-import com.siliqon.cosmicCosmetics.data.EffectType;
-import com.siliqon.cosmicCosmetics.utils.gui.InventoryButton;
-import com.siliqon.cosmicCosmetics.utils.gui.InventoryGUI;
+import com.siliqon.cosmicCosmetics.enums.EffectForm;
+import com.siliqon.cosmicCosmetics.enums.EffectType;
+import com.siliqon.cosmicCosmetics.guis.lib.InventoryButton;
+import com.siliqon.cosmicCosmetics.guis.lib.InventoryGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -12,16 +12,16 @@ import org.bukkit.entity.Player;
 import java.util.List;
 import java.util.Objects;
 
-import static com.siliqon.cosmicCosmetics.utils.general.effects.*;
-import static com.siliqon.cosmicCosmetics.utils.general.gui.*;
-import static com.siliqon.cosmicCosmetics.utils.general.messaging.*;
-import static com.siliqon.cosmicCosmetics.utils.general.misc.*;
+import static com.siliqon.cosmicCosmetics.utils.Effects.*;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.sendMessage;
+import static com.siliqon.cosmicCosmetics.utils.Misc.checkPlayerPermission;
+import static com.siliqon.cosmicCosmetics.utils.UI.*;
 
 public class ProjectileCosmetics extends InventoryGUI {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
     private final Material backgroundMaterial = Material.GRAY_STAINED_GLASS_PANE;
 
-    EffectType activeEffect;
+    private EffectType activeEffect;
     public ProjectileCosmetics() {
         createInventory();
     }
@@ -44,7 +44,7 @@ public class ProjectileCosmetics extends InventoryGUI {
 
             String name = getEffectDisplayName(effectType);
             List<String> description = getEffectDescription(effectType);
-            Material material = getEffectDisplayMaterial(effectType);
+            Material material = getEffectMaterial(effectType);
 
             if (material == Material.AIR || description.isEmpty() || Objects.equals(name, "NONE")) continue;
 

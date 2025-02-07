@@ -1,4 +1,4 @@
-package com.siliqon.cosmicCosmetics.utils.general;
+package com.siliqon.cosmicCosmetics.utils;
 
 import com.siliqon.cosmicCosmetics.CosmicCosmetics;
 import com.siliqon.cosmicCosmetics.files.LangFile;
@@ -12,7 +12,7 @@ import org.bukkit.ChatColor;
 import java.io.File;
 import java.nio.file.Path;
 
-public class files {
+public class Files {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
 
     private static void initConfig() {

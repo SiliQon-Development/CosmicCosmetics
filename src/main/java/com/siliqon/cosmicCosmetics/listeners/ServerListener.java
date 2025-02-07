@@ -6,8 +6,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerLoadEvent;
 
-import static com.siliqon.cosmicCosmetics.utils.general.messaging.logError;
-import static com.siliqon.cosmicCosmetics.utils.general.messaging.sendMessage;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.logError;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.sendMessage;
 
 public class ServerListener implements Listener {
 

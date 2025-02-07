@@ -1,10 +1,10 @@
 package com.siliqon.cosmicCosmetics.guis;
 
 import com.siliqon.cosmicCosmetics.CosmicCosmetics;
-import com.siliqon.cosmicCosmetics.data.EffectForm;
-import com.siliqon.cosmicCosmetics.data.EffectType;
-import com.siliqon.cosmicCosmetics.utils.gui.InventoryButton;
-import com.siliqon.cosmicCosmetics.utils.gui.InventoryGUI;
+import com.siliqon.cosmicCosmetics.enums.EffectForm;
+import com.siliqon.cosmicCosmetics.enums.EffectType;
+import com.siliqon.cosmicCosmetics.guis.lib.InventoryButton;
+import com.siliqon.cosmicCosmetics.guis.lib.InventoryGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -14,9 +14,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
-import static com.siliqon.cosmicCosmetics.utils.general.effects.*;
-import static com.siliqon.cosmicCosmetics.utils.general.gui.*;
-import static com.siliqon.cosmicCosmetics.utils.general.messaging.sendMessage;
+import static com.siliqon.cosmicCosmetics.utils.Effects.*;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.sendMessage;
+import static com.siliqon.cosmicCosmetics.utils.UI.*;
 
 public class MainWindow extends InventoryGUI {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();

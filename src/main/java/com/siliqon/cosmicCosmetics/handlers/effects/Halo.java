@@ -1,9 +1,9 @@
 package com.siliqon.cosmicCosmetics.handlers.effects;
 
 import com.siliqon.cosmicCosmetics.CosmicCosmetics;
-import com.siliqon.cosmicCosmetics.data.ActiveEffectData;
-import com.siliqon.cosmicCosmetics.data.EffectForm;
-import com.siliqon.cosmicCosmetics.data.EffectType;
+import com.siliqon.cosmicCosmetics.custom.ActiveEffectData;
+import com.siliqon.cosmicCosmetics.enums.EffectForm;
+import com.siliqon.cosmicCosmetics.enums.EffectType;
 import org.bukkit.Bukkit;
 
 import java.lang.Math;
@@ -12,17 +12,14 @@ import org.bukkit.Color;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
-import static com.siliqon.cosmicCosmetics.utils.general.effects.effectParticles;
+import static com.siliqon.cosmicCosmetics.utils.Effects.*;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.log;
 
 public class Halo {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
 
     public static void startForPlayer(Player player) {
-        ActiveEffectData pdata = plugin.playerActiveEffects.get(player);
-        if (pdata == null) return;
-        if (pdata.getTaskIds().containsKey(EffectForm.HALO)) Bukkit.getScheduler().cancelTask(pdata.getTaskIds().get(EffectForm.HALO));
-
-        EffectType effectType = pdata.getEffects().get(EffectForm.HALO);
+        EffectType effectType = getActiveEffect(player, EffectForm.HALO);
         if (effectType == null) return;
 
         double radius = .4;
@@ -30,37 +27,44 @@ public class Halo {
         int particles = 15;
         long[] tickCounter = {0};
         int taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
+            if (player.isDead() || !player.isValid() || !player.isOnline() || !player.getWorld().getPlayers().contains(player)) // TODO check if player is still
+                return;
+
             int i = (int) (tickCounter[0] % particles);
             double angle = i * fullCircle / particles + (tickCounter[0] * 0.05);
             double x = radius * Math.cos(angle);
             double z = radius * Math.sin(angle);
             double y = 1.95;
 
+            int xOffset = 0, yOffset = 0, zOffset = 0, speed = 0, count = 1;
             for (Player otherPlayer : Bukkit.getOnlinePlayers()) {
-                if (otherPlayer != player && (plugin.cosmeticsEnabled.get(otherPlayer) == null || !plugin.cosmeticsEnabled.get(otherPlayer)))
+                if (otherPlayer != player && !getEffectsEnabled(otherPlayer))
                     continue;
 
                 if (effectType == EffectType.RAINBOW) {
+                    int r = (int) (Math.random() * 256), g = (int) (Math.random() * 256), b = (int) (Math.random() * 256);
+                    int size = 1;
                     otherPlayer.spawnParticle(
-                            effectParticles.get(effectType),
+                            getEffectParticle(effectType),
                             player.getLocation().add(x, y, z),
-                            1, 0, 0, 0, 0,
-                            new Particle.DustOptions(Color.fromRGB((int) (Math.random() * 256),
-                                    (int) (Math.random() * 256), (int) (Math.random() * 256)), 1f)
+                            count, xOffset, yOffset, zOffset, speed,
+                            new Particle.DustOptions(Color.fromRGB(r, g, b), size)
                     );
                     continue;
                 }
                 otherPlayer.spawnParticle(
-                        effectParticles.get(effectType),
+                        getEffectParticle(effectType),
                         player.getLocation().add(x, y, z),
-                        1,
-                        0, 0, 0, 0
+                        count, xOffset, yOffset, zOffset,
+                        speed
                 );
             }
 
             tickCounter[0]++;
         }, 0L, 1L);
 
+        ActiveEffectData pdata = getPlayerActiveEffectData(player);
+        log("H "+taskId);
         pdata.addTaskId(EffectForm.HALO, taskId);
     }
 }

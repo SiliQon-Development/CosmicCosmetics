@@ -1,4 +1,4 @@
-package com.siliqon.cosmicCosmetics.data;
+package com.siliqon.cosmicCosmetics.enums;
 
 public enum EffectForm {
     PROJECTILE,

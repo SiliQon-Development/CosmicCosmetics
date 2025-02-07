@@ -1,9 +1,9 @@
-package com.siliqon.cosmicCosmetics.utils.general;
+package com.siliqon.cosmicCosmetics.utils;
 
 import com.siliqon.cosmicCosmetics.CosmicCosmetics;
 import org.bukkit.entity.Player;
 
-public class misc {
+public class Misc {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
 
     public static Boolean checkPlayerPermission(Player player, String permission) {

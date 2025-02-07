@@ -11,11 +11,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static com.siliqon.cosmicCosmetics.utils.general.messaging.*;
+import static com.siliqon.cosmicCosmetics.utils.Effects.getEffectsEnabled;
+import static com.siliqon.cosmicCosmetics.utils.Messaging.sendMessage;
 
 @CommandAlias("cosmetics|cc")
 public class CosmeticsCommand extends BaseCommand {
-    private final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
+    private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
 
     @Default
     @CommandPermission("cosmetics.use")
@@ -27,19 +28,19 @@ public class CosmeticsCommand extends BaseCommand {
     @Subcommand("toggle")
     @CommandPermission("cosmetics.toggle")
     public void toggleCosmeticsCommand(Player player) {
-        Boolean enabled = plugin.cosmeticsEnabled.get(player);
-        if (enabled == null || enabled) {
+        boolean enabled = getEffectsEnabled(player);
+        if (enabled) {
             sendMessage(player, plugin.lang.getCosmeticsDisabledOther(), true);
-            plugin.cosmeticsEnabled.put(player, false);
+            plugin.cosmeticsEnabled.put(player.getUniqueId(), false);
         } else {
             sendMessage(player, plugin.lang.getCosmeticsEnabledOther(), true);
-            plugin.cosmeticsEnabled.put(player, true);
+            plugin.cosmeticsEnabled.put(player.getUniqueId(), true);
         }
     }
 
     @Subcommand("version")
     @CommandPermission("cosmetics.version")
     public void versionCommand(CommandSender sender) {
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&bThe current plugin version is "+plugin.getName() + " &d"+plugin.getDescription().getVersion()));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&bThe current plugin version is &d"+plugin.PLUGIN_VERSION));
     }
 }

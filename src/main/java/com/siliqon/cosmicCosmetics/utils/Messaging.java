@@ -1,10 +1,10 @@
-package com.siliqon.cosmicCosmetics.utils.general;
+package com.siliqon.cosmicCosmetics.utils;
 
 import com.siliqon.cosmicCosmetics.CosmicCosmetics;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-public class messaging {
+public class Messaging {
     private static final CosmicCosmetics plugin = CosmicCosmetics.getInstance();
 
     public static void log(String message) {
