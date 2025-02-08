@@ -1,7 +1,7 @@
 name: '${project.name}'
 version: '${project.version}'
-main: com.siliqon.cosmicCosmetics.CosmicCosmetics
-api-version: 1.21
+main: com.siliqon.cosmiccosmetics.CosmicCosmetics
+api-version: 1.21.1
 prefix: '${project.name}'
 authors: [SiliQon]
 description: '${project.description}'
